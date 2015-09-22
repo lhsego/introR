@@ -1,4 +1,4 @@
 ### introR
 
-An introduction to R with examples, by Landon Sego
+[An introduction to R with examples](https://lhsego.github.io/introR), by Landon Sego
 
