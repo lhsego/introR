@@ -1,0 +1,4498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>An Introduction to R</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/custom/custom.css" rel="stylesheet">
+    <!-- font-awesome -->
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- prism -->
+    <link href="assets/prism/prism.css" rel="stylesheet">
+    <link href="assets/prism/prism.r.css" rel="stylesheet">
+    <script type='text/javascript' src='assets/prism/prism.js'></script>
+    <script type='text/javascript' src='assets/prism/prism.r.js'></script>
+    
+    
+    
+    <script type="text/javascript" src="assets/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Config({    
+     extensions: ["tex2jax.js"],    
+     "HTML-CSS": { scale: 100}    
+   });
+   </script>
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+                                   <!-- <link rel="shortcut icon" href="ico/favicon.png"> -->
+  </head>
+
+  <body>
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+           
+        </ul>
+        
+        <p class="myHeader">An Introduction to R</p>
+      </div>
+
+      <hr>
+
+<div class="container-fluid">
+   <div class="row-fluid">
+   
+   <div class="col-md-3 well">
+   <ul class = "nav nav-list" id="toc">
+   <li class='nav-header unselectable' data-edit-href='https://github.com/lhsego/introR1_Overview.Rmd'>Overview</li>
+      
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#description'>Description</a>
+      </li>
+
+
+<li class='nav-header unselectable' data-edit-href='https://github.com/lhsego/introRActivity_1.Rmd'>Activities</li>
+      
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#activity-1-preliminaries'>Activity 1: Preliminaries</a>
+      </li>
+
+
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#activity-2-data-structures'>Activity 2: Data Structures</a>
+      </li>
+
+
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#activity-3-readingwriting-to-disc-installing-packages-writing-functions'>Activity 3: Reading/writing to disc, installing packages, writing functions</a>
+      </li>
+
+
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#activity-4-statistical-and-graphical-analyses'>Activity 4: Statistical and graphical analyses</a>
+      </li>
+
+
+<li class='nav-header unselectable' data-edit-href='https://github.com/lhsego/introRActivity_solutions_2.Rmd'>Exercise Solutions</li>
+      
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#activity-2-exercise-solutions'>Activity 2: Exercise Solutions</a>
+      </li>
+
+
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#activity-3-exercise-solutions'>Activity 3: Exercise Solutions</a>
+      </li>
+
+
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#activity-4-exercise-solutions'>Activity 4: Exercise Solutions</a>
+      </li>
+
+
+<li class='nav-header unselectable' data-edit-href='https://github.com/lhsego/introRAppendix.Rmd'>Appendix</li>
+      
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#r-code'>R Code</a>
+      </li>
+
+
+      <li class='active'>
+         <a target='_self' class='nav-not-header' href='#data'>Data</a>
+      </li>
+
+   </ul>
+   </div>
+
+<div class="col-md-9 tab-content" id="main-content">
+
+<div class='tab-pane active' id='description'>
+<h3>Description</h3>
+
+<p>This is a hands-on introduction to the <a href="http://www.R-project.org">R language</a>, with a number of examples and exercises designed to
+give you a basic feel for R.</p>
+
+<h4>If you are running these examples on RStudio server:</h4>
+
+<ul>
+<li>Connect to the RStudio server and execute the commands of the examples</li>
+<li>You may want to save the <a href="#r-code">R code</a> and <a href="#data">data</a> to your local computer, and then 
+upload the code and data to the RStudio server using the <code>Upload</code> button the menu of the lower right panel. This way you can run the code without having to copy and paste every line.</li>
+</ul>
+
+<h4>If you are running these examples on your local computer:</h4>
+
+<ul>
+<li>Install R: <a href="http://www.r-project.org">http://www.r-project.org</a></li>
+<li>Install RStudio (desktop version): <a href="http://www.rstudio.com">http://www.rstudio.com</a></li>
+<li>Open RStudio (or R) and execute the commands of the examples</li>
+<li>You may want to save the <a href="#r-code">R code</a> and <a href="#data">data</a> to your local computer. This way you can
+run the code without having to copy and paste every line.</li>
+</ul>
+
+</div>
+
+
+<div class='tab-pane' id='activity-1-preliminaries'>
+<h3>Activity 1: Preliminaries</h3>
+
+<h4>Activity 1.1: Help commands</h4>
+
+<p>After entering any computer program, it&#39;s always a good idea to know how to exit.<br>
+To quit R at any time, simply type the following at the prompt:</p>
+
+<pre><code class="r">q()
+</code></pre>
+
+<p>When you don&#39;t know exactly what you&#39;re looking for,
+search for a topic.  There are two ways to do this:</p>
+
+<pre><code class="r">help.search(&quot;graphics&quot;)
+??graphics
+</code></pre>
+
+<p>When you know the name of the R function, e.g. the function
+<code>rnorm()</code> that generates random normal data, there are two ways to do this:</p>
+
+<pre><code class="r">help(rnorm)
+?rnorm
+</code></pre>
+
+<p>Sometimes you just need a reminder about the arguments (the
+inputs) of a function.  The <code>args()</code> function can help in
+this situation.  Here are the arguments for the <code>rnorm()</code>
+function:</p>
+
+<pre><code class="r">args(rnorm)
+</code></pre>
+
+<pre><code>function (n, mean = 0, sd = 1) 
+NULL
+</code></pre>
+
+<p>Examples are often included in the documentation of functions
+at the bottom of the documentation.  Look at the bottom of
+the help file of the <code>seq()</code> function:</p>
+
+<pre><code class="r">?seq
+</code></pre>
+
+<p>You can execute the example code for a function all at once
+using the <code>example()</code> function:</p>
+
+<pre><code class="r">example(seq)
+</code></pre>
+
+<pre><code>
+seq&gt; seq(0, 1, length.out = 11)
+ [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+
+seq&gt; seq(stats::rnorm(20)) # effectively &#39;along&#39;
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+seq&gt; seq(1, 9, by = 2)     # matches &#39;end&#39;
+[1] 1 3 5 7 9
+
+seq&gt; seq(1, 9, by = pi)    # stays below &#39;end&#39;
+[1] 1.000000 4.141593 7.283185
+
+seq&gt; seq(1, 6, by = 3)
+[1] 1 4
+
+seq&gt; seq(1.575, 5.125, by = 0.05)
+ [1] 1.575 1.625 1.675 1.725 1.775 1.825 1.875 1.925 1.975 2.025 2.075
+[12] 2.125 2.175 2.225 2.275 2.325 2.375 2.425 2.475 2.525 2.575 2.625
+[23] 2.675 2.725 2.775 2.825 2.875 2.925 2.975 3.025 3.075 3.125 3.175
+[34] 3.225 3.275 3.325 3.375 3.425 3.475 3.525 3.575 3.625 3.675 3.725
+[45] 3.775 3.825 3.875 3.925 3.975 4.025 4.075 4.125 4.175 4.225 4.275
+[56] 4.325 4.375 4.425 4.475 4.525 4.575 4.625 4.675 4.725 4.775 4.825
+[67] 4.875 4.925 4.975 5.025 5.075 5.125
+
+seq&gt; seq(17) # same as 1:17, or even better seq_len(17)
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
+</code></pre>
+
+<h4>Activity 1.2: Demos</h4>
+
+<p>Some R packages include demonstrations you can run to learn
+about their capability.  Be sure to hit &quot;Enter&quot; to
+cycle through the components of each demo.</p>
+
+<p>Here&#39;s one from the <code>graphics</code> package, which gives a nice
+demonstration of the breadth of graphical capability in R.</p>
+
+<pre><code class="r">demo(&quot;graphics&quot;)
+</code></pre>
+
+<p>And here&#39;s one about generalized linear models (glm):</p>
+
+<pre><code class="r">demo(lm.glm)
+</code></pre>
+
+<h4>Activity 1.3:  R as a calculator</h4>
+
+<p>Addition:</p>
+
+<pre><code class="r">7 + 3
+</code></pre>
+
+<pre><code>[1] 10
+</code></pre>
+
+<p>Subtraction:</p>
+
+<pre><code class="r">7 - 3
+</code></pre>
+
+<pre><code>[1] 4
+</code></pre>
+
+<p>Multiplication:</p>
+
+<pre><code class="r">7 * 3
+</code></pre>
+
+<pre><code>[1] 21
+</code></pre>
+
+<p>Division:</p>
+
+<pre><code class="r">7 / 3
+</code></pre>
+
+<pre><code>[1] 2.333333
+</code></pre>
+
+<p>Integer division:</p>
+
+<pre><code class="r">7 %/% 3
+</code></pre>
+
+<pre><code>[1] 2
+</code></pre>
+
+<p>Division remainder (the modulo):</p>
+
+<pre><code class="r">7 %% 3
+</code></pre>
+
+<pre><code>[1] 1
+</code></pre>
+
+<p>Exponentiation:</p>
+
+<pre><code class="r">exp(7)
+</code></pre>
+
+<pre><code>[1] 1096.633
+</code></pre>
+
+<p>Natural logarithm:</p>
+
+<pre><code class="r">log(7)
+</code></pre>
+
+<pre><code>[1] 1.94591
+</code></pre>
+
+<p>Base 10 log:</p>
+
+<pre><code class="r">log10(1000)
+</code></pre>
+
+<pre><code>[1] 3
+</code></pre>
+
+<p>Examples of common mathematical functions and constants:</p>
+
+<pre><code class="r">sqrt(16)
+</code></pre>
+
+<pre><code>[1] 4
+</code></pre>
+
+<pre><code class="r">cos(pi)
+</code></pre>
+
+<pre><code>[1] -1
+</code></pre>
+
+<p>Powers:  2 to the 5th:</p>
+
+<pre><code class="r">2^5
+</code></pre>
+
+<pre><code>[1] 32
+</code></pre>
+
+<p>Large and small numbers:</p>
+
+<pre><code class="r">1.7e+05
+</code></pre>
+
+<pre><code>[1] 170000
+</code></pre>
+
+<pre><code class="r">1.7e-03
+</code></pre>
+
+<pre><code>[1] 0.0017
+</code></pre>
+
+<p>And there are numerous statistical functions.  For example:
+The probability a standard normal random variable takes
+a value of 1.96 or lower:</p>
+
+<pre><code class="r">pnorm(1.96)
+</code></pre>
+
+<pre><code>[1] 0.9750021
+</code></pre>
+
+<p>And the probability of 4 heads in 12 fair coin flips:</p>
+
+<pre><code class="r">dbinom(4, 12, 0.5)
+</code></pre>
+
+<pre><code>[1] 0.1208496
+</code></pre>
+
+<p>And, best of all, it handles division by 0 gracefully :) </p>
+
+<pre><code class="r">1 / 0
+</code></pre>
+
+<pre><code>[1] Inf
+</code></pre>
+
+<p>R can also perform all the standard matrix operations:
+inner and outer products, matrix multiplication, matrix
+inversion, transpose, eigen vectors and values, various
+decompositions, etc.  It has built-in numerical routines for
+root-finding, optimization, integration, differentiation,
+etc.</p>
+
+</div>
+
+
+<div class='tab-pane' id='activity-2-data-structures'>
+<h3>Activity 2: Data Structures</h3>
+
+<h4>Activity 2.1:  Numeric vectors</h4>
+
+<p>Numeric vectors are the fundamental building blocks of R.
+Most of the techniques shown in this activity apply to any
+type of vector, be it a numeric, character, or logical vector.</p>
+
+<p>Suppose you wish to create an object <code>x</code> and assign it a
+value of 5.  There are two ways to do this:</p>
+
+<pre><code class="r">x = 5
+x &lt;- 5
+</code></pre>
+
+<p>Display the object:</p>
+
+<pre><code class="r">x
+</code></pre>
+
+<pre><code>[1] 5
+</code></pre>
+
+<p>Note that R is CaSe SenSiTivE!</p>
+
+<pre><code class="r">w &lt;- 10
+W &lt;- 12
+</code></pre>
+
+<p>The <code>cat()</code> function prints text to the screen, which is
+useful for writing messages.  The &quot;\n&quot; is the newline
+character.</p>
+
+<pre><code class="r">cat(&quot;Little w =&quot;, w, &quot;is different than big W =&quot;, W, &quot;\n&quot;)
+</code></pre>
+
+<pre><code>Little w = 10 is different than big W = 12 
+</code></pre>
+
+<p>You can create a numeric vector from 1 to 6 and display it
+three different ways.</p>
+
+<pre><code class="r">x0 &lt;- c(1, 2, 3, 4, 5, 6)
+x1 &lt;- seq(1, 6, by = 1)
+x2 &lt;- 1:6
+</code></pre>
+
+<p>View these three objects:</p>
+
+<pre><code class="r">x0
+</code></pre>
+
+<pre><code>[1] 1 2 3 4 5 6
+</code></pre>
+
+<pre><code class="r">x1
+</code></pre>
+
+<pre><code>[1] 1 2 3 4 5 6
+</code></pre>
+
+<pre><code class="r">x2
+</code></pre>
+
+<pre><code>[1] 1 2 3 4 5 6
+</code></pre>
+
+<p>Here&#39;s a sequence from 1 to 22 stepping by 3.</p>
+
+<pre><code class="r">x &lt;- seq(1, 22, by = 3)
+x
+</code></pre>
+
+<pre><code>[1]  1  4  7 10 13 16 19 22
+</code></pre>
+
+<p>This operation will square the elements of <code>x</code>.
+This is a &#39;vectorized&#39; calculation. This means it squares
+each element indvidually and so there is no need to loop
+over each element.</p>
+
+<pre><code class="r">y &lt;- x^2
+y
+</code></pre>
+
+<pre><code>[1]   1  16  49 100 169 256 361 484
+</code></pre>
+
+<p>Assign a value to m:</p>
+
+<pre><code class="r">m = 0.5
+</code></pre>
+
+<p>Another vectorized calculation:  multiple each element of <code>y</code>
+by m:</p>
+
+<pre><code class="r">y * m
+</code></pre>
+
+<pre><code>[1]   0.5   8.0  24.5  50.0  84.5 128.0 180.5 242.0
+</code></pre>
+
+<p>Take the natural lograthrim of of each element of <code>y</code>:</p>
+
+<pre><code class="r">log(y)
+</code></pre>
+
+<pre><code>[1] 0.000000 2.772589 3.891820 4.605170 5.129899 5.545177 5.888878 6.182085
+</code></pre>
+
+<p>Add two sequences together, elementwise:</p>
+
+<pre><code class="r">1:3 + 2:4
+</code></pre>
+
+<pre><code>[1] 3 5 7
+</code></pre>
+
+<p>Suppose a vector is so long we don&#39;t want to display all of
+it. Let&#39;s create a vector of 500 random numbers from
+a normal distribution with mean of 3 and standard deviation
+of 2.</p>
+
+<pre><code class="r">x &lt;- rnorm(500, mean = 3, sd = 2)
+</code></pre>
+
+<p>The <code>str()</code> (structure) function tells us what type of object
+<code>x</code> is and provides some examples of the first few values.</p>
+
+<pre><code class="r">str(x)
+</code></pre>
+
+<pre><code> num [1:500] -0.769 2.76 1.985 4.662 2.486 ...
+</code></pre>
+
+<p>The <code>length()</code> function returns the number of elements in <code>x</code>.</p>
+
+<pre><code class="r">length(x)
+</code></pre>
+
+<pre><code>[1] 500
+</code></pre>
+
+<p>We can calculate the sum, mean, max, min, and standard
+deviation.</p>
+
+<pre><code class="r">sum(x)
+</code></pre>
+
+<pre><code>[1] 1437.02
+</code></pre>
+
+<pre><code class="r">mean(x)
+</code></pre>
+
+<pre><code>[1] 2.87404
+</code></pre>
+
+<pre><code class="r">max(x)
+</code></pre>
+
+<pre><code>[1] 8.806645
+</code></pre>
+
+<pre><code class="r">min(x)
+</code></pre>
+
+<pre><code>[1] -2.347632
+</code></pre>
+
+<pre><code class="r">sd(x)
+</code></pre>
+
+<pre><code>[1] 1.974588
+</code></pre>
+
+<p>The <code>summary()</code> function provides summary statistics.</p>
+
+<pre><code class="r">summary(x)
+</code></pre>
+
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ -2.348   1.588   2.919   2.874   4.204   8.807 
+</code></pre>
+
+<p>The <code>head()</code> and <code>tail()</code> functions shows the first or last 6 elements, respectively.</p>
+
+<pre><code class="r">head(x)
+</code></pre>
+
+<pre><code>[1] -0.7688118  2.7598279  1.9846110  4.6619524  2.4859611  5.3715217
+</code></pre>
+
+<pre><code class="r">tail(x)
+</code></pre>
+
+<pre><code>[1] 2.9538162 3.6379482 3.0638008 0.6297203 1.0774638 3.8071936
+</code></pre>
+
+<p>We can easily extract elements of vectors.  For example,
+let&#39;s grab the 7th element of <code>y</code>:</p>
+
+<pre><code class="r">y &lt;- 1:10
+y[7]
+</code></pre>
+
+<pre><code>[1] 7
+</code></pre>
+
+<p>Or let&#39;s select the 1st, 3rd, and 5th elements of <code>y</code>:</p>
+
+<pre><code class="r">y[c(1,3,5)]
+</code></pre>
+
+<pre><code>[1] 1 3 5
+</code></pre>
+
+<p>Or the 6th through 8th elements:</p>
+
+<pre><code class="r">y[6:8]
+</code></pre>
+
+<pre><code>[1] 6 7 8
+</code></pre>
+
+<p>To select elements that are less than 4, we first make
+an indicator, which is a vector of TRUE and FALSE elements
+indicating whether the elements are less than 4.</p>
+
+<pre><code class="r">indicator &lt;- y &lt; 4
+indicator
+</code></pre>
+
+<pre><code> [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+</code></pre>
+
+<p>And now we select elements that are less than 4 from <code>y</code>:</p>
+
+<pre><code class="r">y[indicator]
+</code></pre>
+
+<pre><code>[1] 1 2 3
+</code></pre>
+
+<p>Another useful tool for generating vectors is the <code>rep()</code>
+function.  A vector of seven 1&#39;s:</p>
+
+<pre><code class="r">z &lt;- rep(1, 7)
+z
+</code></pre>
+
+<pre><code>[1] 1 1 1 1 1 1 1
+</code></pre>
+
+<p>A sequence of 1 to 5, repeated twice:</p>
+
+<pre><code class="r">rep(1:5, 2)
+</code></pre>
+
+<pre><code> [1] 1 2 3 4 5 1 2 3 4 5
+</code></pre>
+
+<p>Another style of repeating, elementwise:</p>
+
+<pre><code class="r">rep(1:5, each = 2)
+</code></pre>
+
+<pre><code> [1] 1 1 2 2 3 3 4 4 5 5
+</code></pre>
+
+<h4>Exercise 2.1: Numeric vectors</h4>
+
+<p>1) Create a vector from 3 to 11, in steps of 2.</p>
+
+<p>2) Create another vector from 12 to 4 in steps of -2.</p>
+
+<p>3) Display the last 2 elements of the second vector.</p>
+
+<p>4) Calculate the mean of the element-wise product of these
+   two vectors.</p>
+
+<h4>Activity 2.2: Character vectors</h4>
+
+<p>Character vectors allow you to store non-numeric data.  They
+are used in R all the time.</p>
+
+<p>We refer to vectors of characters as strings. To create a
+character vector, we do the following:</p>
+
+<pre><code class="r">x = c(&quot;this&quot;, &quot;that&quot;, &quot;those&quot;)
+x
+</code></pre>
+
+<pre><code>[1] &quot;this&quot;  &quot;that&quot;  &quot;those&quot;
+</code></pre>
+
+<p>Extracting characters is the same as extracting elements.</p>
+
+<pre><code class="r">x[2:3]
+</code></pre>
+
+<pre><code>[1] &quot;that&quot;  &quot;those&quot;
+</code></pre>
+
+<p>There are numerous functions for parsing, searching,
+and connecting text.  For example:</p>
+
+<pre><code class="r">y &lt;- c(&quot;cat&quot;, &quot;dog&quot;, &quot;fish&quot;)
+paste(x, y)
+</code></pre>
+
+<pre><code>[1] &quot;this cat&quot;   &quot;that dog&quot;   &quot;those fish&quot;
+</code></pre>
+
+<p>Or we can extract parts of the strings, known as substrings.
+In this case, we extract the first 3 letters of each element,
+beginning at position 1, ending at position 3.</p>
+
+<pre><code class="r">substr(x, 1, 3)
+</code></pre>
+
+<pre><code>[1] &quot;thi&quot; &quot;tha&quot; &quot;tho&quot;
+</code></pre>
+
+<p>Count the number of characters in each element:</p>
+
+<pre><code class="r">nchar(x)
+</code></pre>
+
+<pre><code>[1] 4 4 5
+</code></pre>
+
+<p>Search for the string &quot;s&quot; in each element of <code>x</code> and return
+a logical vector:</p>
+
+<pre><code class="r">sIndicator &lt;- grepl(&quot;s&quot;, x)
+sIndicator
+</code></pre>
+
+<pre><code>[1]  TRUE FALSE  TRUE
+</code></pre>
+
+<p>Select only those words that have &quot;s&quot;:</p>
+
+<pre><code class="r">x[sIndicator]
+</code></pre>
+
+<pre><code>[1] &quot;this&quot;  &quot;those&quot;
+</code></pre>
+
+<p>We can test if a value is in the string using <code>%in%</code>. Here, we
+use an indicator variable to subset the original vector.</p>
+
+<pre><code class="r">mammalIndicator &lt;- y %in% c(&quot;cat&quot;, &quot;dog&quot;)
+mammalIndicator
+</code></pre>
+
+<pre><code>[1]  TRUE  TRUE FALSE
+</code></pre>
+
+<p>Now select the mammals from <code>y</code>:</p>
+
+<pre><code class="r">y[mammalIndicator]
+</code></pre>
+
+<pre><code>[1] &quot;cat&quot; &quot;dog&quot;
+</code></pre>
+
+<p>Regarding quotes:  R will accept double or single quotes for
+all character strings.  Use both in the same statement if
+you need to nest them.</p>
+
+<pre><code class="r">x &lt;- &quot;A string with &#39;inner quotes&#39;&quot;
+x
+</code></pre>
+
+<pre><code>[1] &quot;A string with &#39;inner quotes&#39;&quot;
+</code></pre>
+
+<pre><code class="r">cat(x, &quot;\n&quot;)
+</code></pre>
+
+<pre><code>A string with &#39;inner quotes&#39; 
+</code></pre>
+
+<h4>Exercise 2.2: Character vectors</h4>
+
+<p>1) Create a character vector consisting of nouns (of the
+   length of your choosing).</p>
+
+<p>2) Create a second character vector of same length with
+verbs.</p>
+
+<p>3) Paste the two vectors together.</p>
+
+<p>4) Count the total number of characters in the entire noun
+   vector.  Hint, use the <code>sum</code> function.</p>
+
+<h4>Activity 2.3: Logical vectors</h4>
+
+<p>Logical vectors are used to select subsets of data and
+define logical expressions in R programming.</p>
+
+<p>To create a logical vector:</p>
+
+<pre><code class="r">z &lt;- c(TRUE, FALSE, TRUE, TRUE)
+z
+</code></pre>
+
+<pre><code>[1]  TRUE FALSE  TRUE  TRUE
+</code></pre>
+
+<p>Or, equivalently:</p>
+
+<pre><code class="r">z &lt;- c(T, F, T, T)
+z
+</code></pre>
+
+<pre><code>[1]  TRUE FALSE  TRUE  TRUE
+</code></pre>
+
+<p>We can select elements like any other vector.</p>
+
+<pre><code class="r">z[c(2,4)]
+</code></pre>
+
+<pre><code>[1] FALSE  TRUE
+</code></pre>
+
+<p>The <code>which()</code> function returns the indexes of a logical vector
+that are TRUE.</p>
+
+<pre><code class="r">which(z)
+</code></pre>
+
+<pre><code>[1] 1 3 4
+</code></pre>
+
+<p>And we can summarize over each element in the vector.  For
+example, the <code>any()</code> function returns TRUE if any elements are
+TRUE.</p>
+
+<pre><code class="r">any(z)
+</code></pre>
+
+<pre><code>[1] TRUE
+</code></pre>
+
+<p>And the <code>all()</code> function returns TRUE if all elments are
+TRUE.</p>
+
+<pre><code class="r">all(z)
+</code></pre>
+
+<pre><code>[1] FALSE
+</code></pre>
+
+<p>We can also count the number of true values in a logical
+vector using the <code>sum()</code> function.</p>
+
+<pre><code class="r">sum(z)
+</code></pre>
+
+<pre><code>[1] 3
+</code></pre>
+
+<p>And we can negate a logical vector.</p>
+
+<pre><code class="r">!z
+</code></pre>
+
+<pre><code>[1] FALSE  TRUE FALSE FALSE
+</code></pre>
+
+<p>Let&#39;s create another logical vector, which will be TRUE
+for the elements of 1,2,3,4 that are &lt;= 2 :</p>
+
+<pre><code class="r">y &lt;- 1:4 &lt;= 2
+y
+</code></pre>
+
+<pre><code>[1]  TRUE  TRUE FALSE FALSE
+</code></pre>
+
+<p>We can perform &#39;and&#39; comparisons betwen two logical
+vectors, elementwise.</p>
+
+<pre><code class="r">z &amp; y
+</code></pre>
+
+<pre><code>[1]  TRUE FALSE FALSE FALSE
+</code></pre>
+
+<p>As well as &#39;or&#39; comparisons, elementwise.</p>
+
+<pre><code class="r">z | y
+</code></pre>
+
+<pre><code>[1] TRUE TRUE TRUE TRUE
+</code></pre>
+
+<h4>Exercise 2.3: Logical vectors</h4>
+
+<p>1) Create random numeric vector of length 1000 with values
+    uniformly chosen between 0 and 1.  Hint: use the <code>runif</code>
+    function.</p>
+
+<p>2) Count the number of elements in the vector that
+    fall in the interval [0.2, 0.8].  On average, it should
+    be 600.</p>
+
+<h4>Activity 1.2.4: Integer and complex vectors</h4>
+
+<p>For most applications in R, it will likely not make a
+difference if you represent integer values as &#39;numeric&#39;.
+The difference between the &#39;integer&#39; and &#39;numeric&#39; classes
+is that objects of class &#39;integer&#39; are coded
+as type &#39;int&#39; in the primitive C or Fortran code that is
+running underneath the R interpeter, and objects of class
+&#39;numeric&#39; are usually typed as &#39;double&#39;.  But it might be
+important to you in some cases.</p>
+
+<p>Notice this results in an integer:</p>
+
+<pre><code class="r">x &lt;- 1:3
+str(x)
+</code></pre>
+
+<pre><code> int [1:3] 1 2 3
+</code></pre>
+
+<pre><code class="r">is.integer(x)
+</code></pre>
+
+<pre><code>[1] TRUE
+</code></pre>
+
+<p>Whereas these end up being numeric:</p>
+
+<pre><code class="r">str(c(1, 2, 3))
+</code></pre>
+
+<pre><code> num [1:3] 1 2 3
+</code></pre>
+
+<pre><code class="r">str(seq(1, 3, 1))
+</code></pre>
+
+<pre><code> num [1:3] 1 2 3
+</code></pre>
+
+<p>There are two fullproof ways to create integer vectors.
+Here are two identical approaches:</p>
+
+<pre><code class="r">x1 &lt;- as.integer(c(1, 5, -2))
+x2 &lt;- c(1L, 5L, -2L)
+x1
+</code></pre>
+
+<pre><code>[1]  1  5 -2
+</code></pre>
+
+<pre><code class="r">x2
+</code></pre>
+
+<pre><code>[1]  1  5 -2
+</code></pre>
+
+<p>Note how they are identical (not juse in value, but also
+in type).</p>
+
+<pre><code class="r">identical(x1, x2)
+</code></pre>
+
+<pre><code>[1] TRUE
+</code></pre>
+
+<p>Whereas if we create a numeric vector, they are not identical
+because x1 is of class &#39;integer&#39; and x3 is of class &#39;numeric&#39;.</p>
+
+<pre><code class="r">x3 &lt;- c(1, 2, 3)
+identical(x1, x3)
+</code></pre>
+
+<pre><code>[1] FALSE
+</code></pre>
+
+<p>R can also store and perform mathematical operations with
+complex values (a + bi).  Here&#39;s a complex vector:</p>
+
+<pre><code class="r">v1 &lt;- complex(real = 1:3, imaginary = 4:6)
+v1
+</code></pre>
+
+<pre><code>[1] 1+4i 2+5i 3+6i
+</code></pre>
+
+<pre><code class="r">str(v1)
+</code></pre>
+
+<pre><code> cplx [1:3] 1+4i 2+5i 3+6i
+</code></pre>
+
+<p>And here are some operations on the complex vector, the sum,
+and extracting the real and imaginary portions of the vector.</p>
+
+<pre><code class="r">sum(v1)
+</code></pre>
+
+<pre><code>[1] 6+15i
+</code></pre>
+
+<pre><code class="r">Re(v1)
+</code></pre>
+
+<pre><code>[1] 1 2 3
+</code></pre>
+
+<pre><code class="r">Im(v1)
+</code></pre>
+
+<pre><code>[1] 4 5 6
+</code></pre>
+
+<p>See <code>?complex</code> for more details.</p>
+
+<h4>Activity 2.5: Named vectors</h4>
+
+<p>The elements of vectors in R can be named for convenience.
+Here&#39;s how to create a named vector:</p>
+
+<pre><code class="r">aNamedVec &lt;- c(type = 1, count = 7, max = 10)
+aNamedVec
+</code></pre>
+
+<pre><code> type count   max 
+    1     7    10 
+</code></pre>
+
+<p>You can also assign names using quoted strings, which can
+include spaces or special characters:</p>
+
+<pre><code class="r">bNamedVec &lt;- c(&quot;a type&quot; = 1, &quot;b%type&quot; = 7)
+bNamedVec
+</code></pre>
+
+<pre><code>a type b%type 
+     1      7 
+</code></pre>
+
+<p>And you can extract elements of a named vector by the names.
+Notice how the name is displayed, along with the value of
+the vector.</p>
+
+<pre><code class="r">aNamedVec[&quot;type&quot;]
+</code></pre>
+
+<pre><code>type 
+   1 
+</code></pre>
+
+<p>Suppose you would like extract the element without the name.
+You can do this using the &#39;double brace&#39; syntax:</p>
+
+<pre><code class="r">aNamedVec[[&quot;type&quot;]]
+</code></pre>
+
+<pre><code>[1] 1
+</code></pre>
+
+<p>And you can extract more than one element:</p>
+
+<pre><code class="r">aNamedVec[c(&quot;type&quot;, &quot;max&quot;)]
+</code></pre>
+
+<pre><code>type  max 
+   1   10 
+</code></pre>
+
+<p>But attempting to strip the names when you extract
+more than one element doesn&#39;t work:</p>
+
+<pre><code class="r">try(aNamedVec[[c(&quot;type&quot;, &quot;max&quot;)]])
+</code></pre>
+
+<p>Speaking of removing names, here&#39;s how you can do that:</p>
+
+<pre><code class="r">names(aNamedVec) &lt;- NULL
+aNamedVec
+</code></pre>
+
+<pre><code>[1]  1  7 10
+</code></pre>
+
+<p>And you can use <code>names()</code> to put the names back in again, or
+to change the names</p>
+
+<pre><code class="r">names(aNamedVec) &lt;- c(&quot;type1&quot;, &quot;count1&quot;, &quot;max1&quot;)
+aNamedVec
+</code></pre>
+
+<pre><code> type1 count1   max1 
+     1      7     10 
+</code></pre>
+
+<p>And you can extract the names as well:</p>
+
+<pre><code class="r">names(aNamedVec)
+</code></pre>
+
+<pre><code>[1] &quot;type1&quot;  &quot;count1&quot; &quot;max1&quot;  
+</code></pre>
+
+<p>These naming principles apply to any type of vector:
+integer, numeric, character, logical, or complex</p>
+
+<h4>Exercise 2.5: Named vectors</h4>
+
+<p>1) Create a named character vector of length 3.</p>
+
+<p>2) Create a second named logical vector of length 3.</p>
+
+<p>3) Switch the names of the 2 vectors.</p>
+
+<h4>Activity 2.6: Data frames</h4>
+
+<p>Data frames consist of rows and columns (like a spreadsheet).
+They are the most common way to store data in R.  Columns
+can be of any type:  numeric, character, logical, complex, or
+factors. (We haven&#39;t learned about factors--that&#39;s a more
+advanced topic).</p>
+
+<p>Here&#39;s how we could manually create a simple data frame:</p>
+
+<pre><code class="r">df &lt;- data.frame(a = 1:6, b = letters[1:6],
+                 c = rep(c(TRUE, FALSE), each = 3))
+df
+</code></pre>
+
+<pre><code>  a b     c
+1 1 a  TRUE
+2 2 b  TRUE
+3 3 c  TRUE
+4 4 d FALSE
+5 5 e FALSE
+6 6 f FALSE
+</code></pre>
+
+<p>And here&#39;s a more interesting data frame with the specs of
+various automobiles that is included in the datasets package
+that comes with R:</p>
+
+<pre><code class="r">mtcars
+</code></pre>
+
+<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+</code></pre>
+
+<p>There are a number of tools to extract info from data frames
+and create subsets.</p>
+
+<p>The <code>str</code> function tells the names and types of variables in
+the data frame.</p>
+
+<pre><code class="r">str(mtcars)
+</code></pre>
+
+<pre><code>&#39;data.frame&#39;:   32 obs. of  11 variables:
+ $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+ $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+ $ disp: num  160 160 108 258 360 ...
+ $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+ $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+ $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+ $ qsec: num  16.5 17 18.6 19.4 17 ...
+ $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+ $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+ $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+ $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+</code></pre>
+
+<p>Look at the first 6 rows of the data frame:</p>
+
+<pre><code class="r">head(mtcars)
+</code></pre>
+
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</code></pre>
+
+<p>We can display the number of rows.</p>
+
+<pre><code class="r">nrow(mtcars)
+</code></pre>
+
+<pre><code>[1] 32
+</code></pre>
+
+<p>We can display the number of columns.</p>
+
+<pre><code class="r">ncol(mtcars)
+</code></pre>
+
+<pre><code>[1] 11
+</code></pre>
+
+<p>We can extract the rownames as a character vector.</p>
+
+<pre><code class="r">rownames(mtcars)
+</code></pre>
+
+<pre><code> [1] &quot;Mazda RX4&quot;           &quot;Mazda RX4 Wag&quot;       &quot;Datsun 710&quot;         
+ [4] &quot;Hornet 4 Drive&quot;      &quot;Hornet Sportabout&quot;   &quot;Valiant&quot;            
+ [7] &quot;Duster 360&quot;          &quot;Merc 240D&quot;           &quot;Merc 230&quot;           
+[10] &quot;Merc 280&quot;            &quot;Merc 280C&quot;           &quot;Merc 450SE&quot;         
+[13] &quot;Merc 450SL&quot;          &quot;Merc 450SLC&quot;         &quot;Cadillac Fleetwood&quot; 
+[16] &quot;Lincoln Continental&quot; &quot;Chrysler Imperial&quot;   &quot;Fiat 128&quot;           
+[19] &quot;Honda Civic&quot;         &quot;Toyota Corolla&quot;      &quot;Toyota Corona&quot;      
+[22] &quot;Dodge Challenger&quot;    &quot;AMC Javelin&quot;         &quot;Camaro Z28&quot;         
+[25] &quot;Pontiac Firebird&quot;    &quot;Fiat X1-9&quot;           &quot;Porsche 914-2&quot;      
+[28] &quot;Lotus Europa&quot;        &quot;Ford Pantera L&quot;      &quot;Ferrari Dino&quot;       
+[31] &quot;Maserati Bora&quot;       &quot;Volvo 142E&quot;         
+</code></pre>
+
+<p>We can extract the colum names as a character vector.</p>
+
+<pre><code class="r">colnames(mtcars)
+</code></pre>
+
+<pre><code> [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;
+[11] &quot;carb&quot;
+</code></pre>
+
+<p>And we can see summaries of each column.</p>
+
+<pre><code class="r">summary(mtcars)
+</code></pre>
+
+<pre><code>      mpg             cyl             disp             hp       
+ Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
+ 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
+ Median :19.20   Median :6.000   Median :196.3   Median :123.0  
+ Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
+ 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
+ Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
+      drat             wt             qsec             vs        
+ Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
+ 1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
+ Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
+ Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
+ 3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
+ Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
+       am              gear            carb      
+ Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+ 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+ Median :0.0000   Median :4.000   Median :2.000  
+ Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+ 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :1.0000   Max.   :5.000   Max.   :8.000  
+</code></pre>
+
+<p>We can subset a data frame similar to the way we extracted
+elements from vectors.  For example, let&#39;s extract the
+3rd row and 4th column of mtcars.</p>
+
+<pre><code class="r">mtcars[3, 4]
+</code></pre>
+
+<pre><code>[1] 93
+</code></pre>
+
+<p>Equivalently, we could have used the row and column name
+to extract the data:</p>
+
+<pre><code class="r">mtcars[&quot;Datsun 710&quot;, &quot;hp&quot;]
+</code></pre>
+
+<pre><code>[1] 93
+</code></pre>
+
+<p>In general, using the row and column name is a better
+programming practice than using just the row or column
+numbers because it makes code easier to read and there&#39;s no
+mistaking which rows or columns were selected.</p>
+
+<p>Alternativaly, you can specify rows 3, 4, and 5.
+These two statements give the same result:</p>
+
+<pre><code class="r">mtcars[3:5, ]
+</code></pre>
+
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+</code></pre>
+
+<pre><code class="r">mtcars[c(&quot;Datsun 710&quot;, &quot;Hornet 4 Drive&quot;, &quot;Hornet Sportabout&quot;),]
+</code></pre>
+
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+</code></pre>
+
+<p>Or extract multiple rows and columns simultaneously.
+These are equivalent:</p>
+
+<pre><code class="r">mtcars[c(1,30), c(1, 5:7)]
+</code></pre>
+
+<pre><code>              mpg drat   wt  qsec
+Mazda RX4    21.0 3.90 2.62 16.46
+Ferrari Dino 19.7 3.62 2.77 15.50
+</code></pre>
+
+<pre><code class="r">mtcars[c(&quot;Mazda RX4&quot;, &quot;Ferrari Dino&quot;), c(&quot;mpg&quot;, &quot;drat&quot;,
+                                         &quot;wt&quot;, &quot;qsec&quot;)]
+</code></pre>
+
+<pre><code>              mpg drat   wt  qsec
+Mazda RX4    21.0 3.90 2.62 16.46
+Ferrari Dino 19.7 3.62 2.77 15.50
+</code></pre>
+
+<p>Suppose we wish to look at the vehicles that have high power
+but still good gas mileage (e.g. cars with horsepower &gt; 150
+and mpg &gt; 15):</p>
+
+<pre><code class="r">indicator &lt;- (mtcars[,&quot;hp&quot;] &gt; 150) &amp; (mtcars[,&quot;mpg&quot;] &gt; 15)
+mtcars[indicator, c(&quot;hp&quot;, &quot;mpg&quot;)]
+</code></pre>
+
+<pre><code>                   hp  mpg
+Hornet Sportabout 175 18.7
+Merc 450SE        180 16.4
+Merc 450SL        180 17.3
+Merc 450SLC       180 15.2
+Pontiac Firebird  175 19.2
+Ford Pantera L    264 15.8
+Ferrari Dino      175 19.7
+</code></pre>
+
+<p>Suppose we wish to exclude Japanese-made cars from the data:</p>
+
+<pre><code class="r">japanese &lt;- c(&quot;Mazda RX4&quot;, &quot;Mazda RX4 Wag&quot;, &quot;Datsun 710&quot;,
+              &quot;Honda Civic&quot;, &quot;Toyota Corolla&quot;, &quot;Toyota Corona&quot;)
+japaneseInd &lt;- rownames(mtcars) %in% japanese
+nonJapan &lt;- mtcars[!japaneseInd,]
+</code></pre>
+
+<p>Did we get them all?  If so, these two numbers should be
+the same.</p>
+
+<pre><code class="r">nrow(mtcars) - nrow(nonJapan)
+</code></pre>
+
+<pre><code>[1] 6
+</code></pre>
+
+<pre><code class="r">length(japanese)
+</code></pre>
+
+<pre><code>[1] 6
+</code></pre>
+
+<p>And as if there weren&#39;t enough options, a single column can
+be extracted from a data frame using the $.  For example,
+let&#39;s get the number of gears:</p>
+
+<pre><code class="r">gears &lt;- mtcars$gear
+</code></pre>
+
+<p>Notice it&#39;s a numeric vector.</p>
+
+<pre><code class="r">str(gears)
+</code></pre>
+
+<pre><code> num [1:32] 4 4 4 3 3 3 3 4 4 4 ...
+</code></pre>
+
+<p>And we can tabulate the number of vehicles with 3, 4, or 5
+gears:</p>
+
+<pre><code class="r">table(gears)
+</code></pre>
+
+<pre><code>gears
+ 3  4  5 
+15 12  5 
+</code></pre>
+
+<p>Last of all, for variables that are discrete, with relatively
+few values, we might want to do a cross tabluation.  Here&#39;s
+an example comparing the number of gears to the number of
+cylinders.</p>
+
+<pre><code class="r">table(mtcars[,c(&quot;cyl&quot;, &quot;gear&quot;)])
+</code></pre>
+
+<pre><code>   gear
+cyl  3  4  5
+  4  1  8  2
+  6  2  4  1
+  8 12  0  2
+</code></pre>
+
+<h4>Exercise 2.6: Data frames</h4>
+
+<p>1) Create a data frame with at least 7 rows with the
+following columns:
+    1. A character vector consisting of some repetition of
+       the letters &#39;a&#39;, &#39;b&#39; and &#39;c&#39;
+    2. A numeric vector of randomly generated numbers between
+       0 and 1.  Hint:  use <code>runif()</code>
+    3. A second numeric vector of randomly generated numbers
+       between 2 and 7.  Hint: use <code>runif()</code> again</p>
+
+<p>2) Display the number of rows of the data frame.</p>
+
+<p>3) Assign rownames consisting of capital letters, &#39;A&#39;, &#39;B&#39;,
+    &#39;C&#39;, etc.  Hint, use the <code>LETTERS</code> object that is part of
+    R.</p>
+
+<p>4) Display the second column of the fourth and fifth rows
+    using the row and column names of the data frame.</p>
+
+<p>5) Create a subset of the data by selecting those observations
+    meet all of the following criteria:
+      a.  The character vector has a value of &#39;b&#39; or &#39;c&#39;.
+      b.  The value of the first numeric vector is greater than
+          0.1.
+      c.  The value of the second numeric vector is less than
+          6.</p>
+
+<h4>Activity 2.7: Matrices</h4>
+
+<p>Matrices in R are similar to data frames, with one key
+difference:  all elements in a data frame must be the same
+type, either integer, numeric, character, logical, or complex.</p>
+
+<p>Here is a simple matrix of integers.  Notice how R loads
+the matrix columnwise by default.</p>
+
+<pre><code class="r">m1 &lt;- matrix(1:15, nrow = 5, ncol = 3)
+m1
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    6   11
+[2,]    2    7   12
+[3,]    3    8   13
+[4,]    4    9   14
+[5,]    5   10   15
+</code></pre>
+
+<pre><code class="r">str(m1)
+</code></pre>
+
+<pre><code> int [1:5, 1:3] 1 2 3 4 5 6 7 8 9 10 ...
+</code></pre>
+
+<p>We could also load the matrix rowwise:</p>
+
+<pre><code class="r">m1 &lt;- matrix(1:15, nrow = 5, ncol = 3, byrow = TRUE)
+m1
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+[3,]    7    8    9
+[4,]   10   11   12
+[5,]   13   14   15
+</code></pre>
+
+<p>We can add column names and rownames:</p>
+
+<pre><code class="r">rownames(m1) &lt;- paste(&quot;Row&quot;, 1:5, sep = &quot;&quot;)
+colnames(m1) &lt;- paste(&quot;Col&quot;, 1:3, sep = &quot;&quot;)
+m1
+</code></pre>
+
+<pre><code>     Col1 Col2 Col3
+Row1    1    2    3
+Row2    4    5    6
+Row3    7    8    9
+Row4   10   11   12
+Row5   13   14   15
+</code></pre>
+
+<p>Alternatively, we can add in the row and column names from
+the start when we build the matrix using the <code>dimnames</code>
+argument.</p>
+
+<pre><code class="r">m1 &lt;- matrix(1:15, nrow = 5, ncol = 3,
+             dimnames = list(paste(&quot;Row&quot;, 1:5, sep = &quot;&quot;),
+                             paste(&quot;Col&quot;, 1:3, sep = &quot;&quot;)))
+m1
+</code></pre>
+
+<pre><code>     Col1 Col2 Col3
+Row1    1    6   11
+Row2    2    7   12
+Row3    3    8   13
+Row4    4    9   14
+Row5    5   10   15
+</code></pre>
+
+<p>We can also use <code>rownames()</code> and <code>colnames()</code> to extract
+names from the matrix.</p>
+
+<pre><code class="r">rownames(m1)
+</code></pre>
+
+<pre><code>[1] &quot;Row1&quot; &quot;Row2&quot; &quot;Row3&quot; &quot;Row4&quot; &quot;Row5&quot;
+</code></pre>
+
+<pre><code class="r">colnames(m1)
+</code></pre>
+
+<pre><code>[1] &quot;Col1&quot; &quot;Col2&quot; &quot;Col3&quot;
+</code></pre>
+
+<p>We can get summary information about the matrix, like
+the total number of elements, using <code>length()</code>.</p>
+
+<pre><code class="r">length(m1)
+</code></pre>
+
+<pre><code>[1] 15
+</code></pre>
+
+<p>The number of columns:</p>
+
+<pre><code class="r">ncol(m1)
+</code></pre>
+
+<pre><code>[1] 3
+</code></pre>
+
+<p>And the number of rows:</p>
+
+<pre><code class="r">nrow(m1)
+</code></pre>
+
+<pre><code>[1] 5
+</code></pre>
+
+<p>As with data frames, we can extract elements using row and
+column names:</p>
+
+<pre><code class="r">m1[c(&quot;Row1&quot;, &quot;Row3&quot;), c(&quot;Col1&quot;, &quot;Col2&quot;)]
+</code></pre>
+
+<pre><code>     Col1 Col2
+Row1    1    6
+Row3    3    8
+</code></pre>
+
+<p>Or we can extract using row/column indexes:</p>
+
+<pre><code class="r">m1[c(1, 3), 1:2]
+</code></pre>
+
+<pre><code>     Col1 Col2
+Row1    1    6
+Row3    3    8
+</code></pre>
+
+<p>Likewise, we can create a matrix of of other types.  Let&#39;s
+create a matrix of boolean values (logicals).  In this case,
+we&#39;ll start with a random vector of length 9 that consists
+of TRUEs and FALSEs using the <code>sample()</code> function.</p>
+
+<pre><code class="r">x &lt;- sample(c(TRUE, FALSE), 9, replace = TRUE)
+</code></pre>
+
+<p>To build the matrix, notice that we only need to specify
+the number of rows, or the number of columns, but not both.
+This is because the length of <code>x</code>, combined the row or column
+number is sufficient to define the matrix.</p>
+
+<pre><code class="r">m2 &lt;- matrix(x, ncol = 3)
+m2
+</code></pre>
+
+<pre><code>      [,1] [,2]  [,3]
+[1,] FALSE TRUE FALSE
+[2,]  TRUE TRUE FALSE
+[3,] FALSE TRUE  TRUE
+</code></pre>
+
+<pre><code class="r">str(m2)
+</code></pre>
+
+<pre><code> logi [1:3, 1:3] FALSE TRUE FALSE TRUE TRUE TRUE ...
+</code></pre>
+
+<p>And you can melt a matrix back into a vector using <code>as.vector()</code>:</p>
+
+<pre><code class="r">x1 &lt;- as.vector(m2)
+x1
+</code></pre>
+
+<pre><code>[1] FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+</code></pre>
+
+<pre><code class="r">identical(x, x1)
+</code></pre>
+
+<pre><code>[1] TRUE
+</code></pre>
+
+<p>You can also create a matrix of empty values:</p>
+
+<pre><code class="r">matrix(NA,  ncol = 2, nrow = 2)
+</code></pre>
+
+<pre><code>     [,1] [,2]
+[1,]   NA   NA
+[2,]   NA   NA
+</code></pre>
+
+<p>Or a matrix of repeated values:</p>
+
+<pre><code class="r">matrix(1,   ncol = 2, nrow = 2)
+</code></pre>
+
+<pre><code>     [,1] [,2]
+[1,]    1    1
+[2,]    1    1
+</code></pre>
+
+<pre><code class="r">matrix(1:2, ncol = 2, nrow = 2)
+</code></pre>
+
+<pre><code>     [,1] [,2]
+[1,]    1    1
+[2,]    2    2
+</code></pre>
+
+<p>But if the vector you provide doesn&#39;t divide evenly into the
+number of matrix elements, you get warned:</p>
+
+<pre><code class="r">matrix(1:3, ncol = 2, nrow = 2)
+</code></pre>
+
+<pre><code>Warning in matrix(1:3, ncol = 2, nrow = 2): data length [3] is not a sub-
+multiple or multiple of the number of rows [2]
+</code></pre>
+
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    1
+</code></pre>
+
+<p>All the standard matrix operations are available in R. Let&#39;s
+create a set of conformable column vectors and matrices to
+illustrate:</p>
+
+<pre><code class="r">v1 &lt;- 1:3
+v2 &lt;- 4:6
+m1 &lt;- matrix(c(3, 11, 16, 1, 4, 1, 4, 14, 19), nrow = 3)
+m2 &lt;- matrix(1:9, ncol = 3)
+</code></pre>
+
+<p>Transpose the column vector to create a row vector:</p>
+
+<pre><code class="r">t(v1)
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    2    3
+</code></pre>
+
+<p>Transpose the matrix:</p>
+
+<pre><code class="r">t(m1)
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    3   11   16
+[2,]    1    4    1
+[3,]    4   14   19
+</code></pre>
+
+<p>Inner product of two vectors.  Notice it returns a 1 x 1
+matrix.</p>
+
+<pre><code class="r">t(v1) %*% v2
+</code></pre>
+
+<pre><code>     [,1]
+[1,]   32
+</code></pre>
+
+<p>If you want to just have a simple vector (non-matrix)
+object returned after calculating the inner product:</p>
+
+<pre><code class="r">as.vector(t(v1) %*% v2)
+</code></pre>
+
+<pre><code>[1] 32
+</code></pre>
+
+<p>Outer product of two vectors:</p>
+
+<pre><code class="r">v1 %*% t(v2)
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    4    5    6
+[2,]    8   10   12
+[3,]   12   15   18
+</code></pre>
+
+<p>Matrix multiplication:</p>
+
+<pre><code class="r">m1 %*% m2
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]   17   41   65
+[2,]   61  148  235
+[3,]   75  183  291
+</code></pre>
+
+<p>Matrix inversion:</p>
+
+<pre><code class="r">solve(m1)
+</code></pre>
+
+<pre><code>          [,1]       [,2]        [,3]
+[1,] -5.636364  1.3636364  0.18181818
+[2,] -1.363636  0.6363636 -0.18181818
+[3,]  4.818182 -1.1818182 -0.09090909
+</code></pre>
+
+<p>Calculate eigen vectors and values:</p>
+
+<pre><code class="r">eigen(m2)
+</code></pre>
+
+<pre><code>$values
+[1]  1.611684e+01 -1.116844e+00 -5.700691e-16
+
+$vectors
+           [,1]       [,2]       [,3]
+[1,] -0.4645473 -0.8829060  0.4082483
+[2,] -0.5707955 -0.2395204 -0.8164966
+[3,] -0.6770438  0.4038651  0.4082483
+</code></pre>
+
+<p>Calculate the determinant:</p>
+
+<pre><code class="r">det(m1)
+</code></pre>
+
+<pre><code>[1] -11
+</code></pre>
+
+<p>Extract the diagonal elements:</p>
+
+<pre><code class="r">diag(m2)
+</code></pre>
+
+<pre><code>[1] 1 5 9
+</code></pre>
+
+<p>Stack matrices on top of each other using &quot;row bind&quot;:</p>
+
+<pre><code class="r">rbind(m1, m2)
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    3    1    4
+[2,]   11    4   14
+[3,]   16    1   19
+[4,]    1    4    7
+[5,]    2    5    8
+[6,]    3    6    9
+</code></pre>
+
+<p>Join matrices side by side using &quot;column bind&quot;:</p>
+
+<pre><code class="r">cbind(m1, m2)
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    3    1    4    1    4    7
+[2,]   11    4   14    2    5    8
+[3,]   16    1   19    3    6    9
+</code></pre>
+
+<p>By the way, <code>rbind()</code> and <code>cbind()</code> work the same way for data
+frames too, so long as the variable types and the
+dimensions of the data frames are conformable.</p>
+
+<p>Elementwise arithmetic operations:</p>
+
+<pre><code class="r">m1 + m2
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    4    5   11
+[2,]   13    9   22
+[3,]   19    7   28
+</code></pre>
+
+<pre><code class="r">m1 - m2
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    2   -3   -3
+[2,]    9   -1    6
+[3,]   13   -5   10
+</code></pre>
+
+<pre><code class="r">m1 * m2
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3]
+[1,]    3    4   28
+[2,]   22   20  112
+[3,]   48    6  171
+</code></pre>
+
+<pre><code class="r">m1 / m2
+</code></pre>
+
+<pre><code>         [,1]      [,2]      [,3]
+[1,] 3.000000 0.2500000 0.5714286
+[2,] 5.500000 0.8000000 1.7500000
+[3,] 5.333333 0.1666667 2.1111111
+</code></pre>
+
+<p>Add all the elements in the matrix:</p>
+
+<pre><code class="r">sum(m1)
+</code></pre>
+
+<pre><code>[1] 73
+</code></pre>
+
+<p>Take the product of all the elments in the matrix:</p>
+
+<pre><code class="r">prod(m1)
+</code></pre>
+
+<pre><code>[1] 2247168
+</code></pre>
+
+<p>Calculate the sums of the rows and of the columns:</p>
+
+<pre><code class="r">rowSums(m1)
+</code></pre>
+
+<pre><code>[1]  8 29 36
+</code></pre>
+
+<pre><code class="r">colSums(m1)
+</code></pre>
+
+<pre><code>[1] 30  6 37
+</code></pre>
+
+<p>Calculate the means of the rows and of the columns:</p>
+
+<pre><code class="r">rowMeans(m1)
+</code></pre>
+
+<pre><code>[1]  2.666667  9.666667 12.000000
+</code></pre>
+
+<pre><code class="r">colMeans(m1)
+</code></pre>
+
+<pre><code>[1] 10.00000  2.00000 12.33333
+</code></pre>
+
+<p>Use the sums to get the same results as the rowMeans</p>
+
+<pre><code class="r">colSums(m1) / nrow(m1)
+</code></pre>
+
+<pre><code>[1] 10.00000  2.00000 12.33333
+</code></pre>
+
+<p>Create a 5 x 5 identity matrix:</p>
+
+<pre><code class="r">diag(5)
+</code></pre>
+
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    0    0    0    0
+[2,]    0    1    0    0    0
+[3,]    0    0    1    0    0
+[4,]    0    0    0    1    0
+[5,]    0    0    0    0    1
+</code></pre>
+
+<h4>Exercise 2.7:  Matrices</h4>
+
+<p>1) Create a 2 x 2 matrix with the following elements:
+   (2, 4, 7, 1), loaded rowwise.</p>
+
+<p>2) Calculate the trace (the sum of the diagonal elements)
+   of the matrix.  Hint: use the <code>sum()</code> function.</p>
+
+<p>3) Create a column vector of length 2 with the elements
+   (3, 5).</p>
+
+<p>4) Using matrix multiplication, and your results from (1)
+   and (3), find the product of the transpose of the column
+   vector, the matrix, and the column vector.  Display the
+   result should as a single number (not a 1 x 1 matrix).</p>
+
+<h4>Activity 2.8:  Lists</h4>
+
+<p>Lists are one of the most flexible objects in R.  A list is
+a collection of R objects--and these objects do not have to
+be of any particular type or size.  These objects can even
+be other lists.</p>
+
+<p>Let&#39;s build a simple list.  Notice how the elements are quite
+heterogenous (different data types, different lengths).</p>
+
+<pre><code class="r">aList &lt;- list(a = 1:5, b = rep(TRUE, 2), c = letters[1:3])
+aList
+</code></pre>
+
+<pre><code>$a
+[1] 1 2 3 4 5
+
+$b
+[1] TRUE TRUE
+
+$c
+[1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+</code></pre>
+
+<pre><code class="r">str(aList)
+</code></pre>
+
+<pre><code>List of 3
+ $ a: int [1:5] 1 2 3 4 5
+ $ b: logi [1:2] TRUE TRUE
+ $ c: chr [1:3] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+</code></pre>
+
+<p>We can extract the names:</p>
+
+<pre><code class="r">names(aList)
+</code></pre>
+
+<pre><code>[1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+</code></pre>
+
+<p>And we can assign new names:</p>
+
+<pre><code class="r">names(aList) &lt;- c(&quot;a.new&quot;, &quot;b.new&quot;, &quot;c.new&quot;)
+aList
+</code></pre>
+
+<pre><code>$a.new
+[1] 1 2 3 4 5
+
+$b.new
+[1] TRUE TRUE
+
+$c.new
+[1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+</code></pre>
+
+<p>We can extract elements of the list using indexes, where
+the double-brace [[]] notation removes the name.</p>
+
+<pre><code class="r">aList[1]
+</code></pre>
+
+<pre><code>$a.new
+[1] 1 2 3 4 5
+</code></pre>
+
+<pre><code class="r">aList[[1]]
+</code></pre>
+
+<pre><code>[1] 1 2 3 4 5
+</code></pre>
+
+<p>We can also extract elements by names:</p>
+
+<pre><code class="r">aList[&quot;b.new&quot;]
+</code></pre>
+
+<pre><code>$b.new
+[1] TRUE TRUE
+</code></pre>
+
+<pre><code class="r">aList[[&quot;b.new&quot;]]
+</code></pre>
+
+<pre><code>[1] TRUE TRUE
+</code></pre>
+
+<p>Like dataframes, we can also extract single elements from
+a list using the <code>$</code>, just like we can with data frames</p>
+
+<pre><code class="r">aList$b.new
+</code></pre>
+
+<pre><code>[1] TRUE TRUE
+</code></pre>
+
+<p>And we can extract multiple elements as well:</p>
+
+<pre><code class="r">aList[c(&quot;c.new&quot;, &quot;b.new&quot;)]
+</code></pre>
+
+<pre><code>$c.new
+[1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+
+$b.new
+[1] TRUE TRUE
+</code></pre>
+
+<p>But if we use the double bracket with more than one element,
+we end up with trouble:</p>
+
+<pre><code class="r">try(aList[[c(&quot;c.new&quot;, &quot;b.new&quot;)]])
+</code></pre>
+
+<p>The length() function returns the number of elements</p>
+
+<pre><code class="r">length(aList)
+</code></pre>
+
+<pre><code>[1] 3
+</code></pre>
+
+<p>Let&#39;s create new list:</p>
+
+<pre><code class="r">aNewList &lt;- list(d = &quot;nice&quot;, e = 12.7,
+                 f = complex(real = 1, imaginary = 7))
+aNewList
+</code></pre>
+
+<pre><code>$d
+[1] &quot;nice&quot;
+
+$e
+[1] 12.7
+
+$f
+[1] 1+7i
+</code></pre>
+
+<p>And append the new list to the first list using c()</p>
+
+<pre><code class="r">bList &lt;- c(aList, aNewList)
+bList
+</code></pre>
+
+<pre><code>$a.new
+[1] 1 2 3 4 5
+
+$b.new
+[1] TRUE TRUE
+
+$c.new
+[1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+
+$d
+[1] &quot;nice&quot;
+
+$e
+[1] 12.7
+
+$f
+[1] 1+7i
+</code></pre>
+
+<p>We can individually operate on each element in the list
+as well, using <code>lapply()</code>.  For example, suppose we wanted
+to know the length of each element in the list:</p>
+
+<pre><code class="r">lapply(bList, length)
+</code></pre>
+
+<pre><code>$a.new
+[1] 5
+
+$b.new
+[1] 2
+
+$c.new
+[1] 3
+
+$d
+[1] 1
+
+$e
+[1] 1
+
+$f
+[1] 1
+</code></pre>
+
+<p>Or suppose we wish to test whether each element is of type
+&quot;character&quot;, which we can do using the is.character() function</p>
+
+<pre><code class="r">lapply(bList, is.character)
+</code></pre>
+
+<pre><code>$a.new
+[1] FALSE
+
+$b.new
+[1] FALSE
+
+$c.new
+[1] TRUE
+
+$d
+[1] TRUE
+
+$e
+[1] FALSE
+
+$f
+[1] FALSE
+</code></pre>
+
+<p>Or perhaps we wish to convert every element into a character
+vector, using <code>as.character()</code>:</p>
+
+<pre><code class="r">str(lapply(bList, as.character))
+</code></pre>
+
+<pre><code>List of 6
+ $ a.new: chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ b.new: chr [1:2] &quot;TRUE&quot; &quot;TRUE&quot;
+ $ c.new: chr [1:3] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+ $ d    : chr &quot;nice&quot;
+ $ e    : chr &quot;12.7&quot;
+ $ f    : chr &quot;1+7i&quot;
+</code></pre>
+
+<p>If we want to deconstruct the list into a single vector,
+we can use <code>unlist()</code>, which will create chose the type of
+the resulting vector.</p>
+
+<pre><code class="r">unlist(aList)
+</code></pre>
+
+<pre><code>a.new1 a.new2 a.new3 a.new4 a.new5 b.new1 b.new2 c.new1 c.new2 c.new3 
+   &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;4&quot;    &quot;5&quot; &quot;TRUE&quot; &quot;TRUE&quot;    &quot;a&quot;    &quot;b&quot;    &quot;c&quot; 
+</code></pre>
+
+<p>Here&#39;s another example of unlist with numeric vectors:</p>
+
+<pre><code class="r">cList &lt;- list(a = 1:3, b = 4:10)
+cList
+</code></pre>
+
+<pre><code>$a
+[1] 1 2 3
+
+$b
+[1]  4  5  6  7  8  9 10
+</code></pre>
+
+<pre><code class="r">unlist(cList)
+</code></pre>
+
+<pre><code>a1 a2 a3 b1 b2 b3 b4 b5 b6 b7 
+ 1  2  3  4  5  6  7  8  9 10 
+</code></pre>
+
+<p>We could remove the names from &quot;aList&quot;:</p>
+
+<pre><code class="r">names(aList) &lt;- NULL
+aList
+</code></pre>
+
+<pre><code>[[1]]
+[1] 1 2 3 4 5
+
+[[2]]
+[1] TRUE TRUE
+
+[[3]]
+[1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+</code></pre>
+
+<p>But without names, you can only access the elements with
+index numbers:</p>
+
+<pre><code class="r">aList[2:3]
+</code></pre>
+
+<pre><code>[[1]]
+[1] TRUE TRUE
+
+[[2]]
+[1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+</code></pre>
+
+<p>However, you can still use <code>lapply()</code> with a list that
+doesn&#39;t have names.  Here we&#39;re applying the <code>names()</code> funtion
+to each element of the list. The resulting NULL output
+for each element confirms the names are indeed gone.</p>
+
+<pre><code class="r">lapply(aList, names)
+</code></pre>
+
+<pre><code>[[1]]
+NULL
+
+[[2]]
+NULL
+
+[[3]]
+NULL
+</code></pre>
+
+<p>Notice how adding <code>unlist()</code> collapes the output into a
+vector.</p>
+
+<pre><code class="r">unlist(lapply(aList, is.numeric))
+</code></pre>
+
+<pre><code>[1]  TRUE FALSE FALSE
+</code></pre>
+
+<p>And you can create a list without names from the start:</p>
+
+<pre><code class="r">dList &lt;- list(1:10, rep(TRUE, 2), rnorm(3), diag(2))
+dList
+</code></pre>
+
+<pre><code>[[1]]
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+[[2]]
+[1] TRUE TRUE
+
+[[3]]
+[1] -2.436352 -0.447153 -1.247505
+
+[[4]]
+     [,1] [,2]
+[1,]    1    0
+[2,]    0    1
+</code></pre>
+
+<p>Last of all, there is an important connection between
+lists and data frames.  Data frames are special cases of
+lists!  A data frame is a list of vectors of potentially
+different types that all have the same length.</p>
+
+<h4>Exercise 2.8: Lists</h4>
+
+<p>1) Create a named list with 3 elements:  a character vector,
+   a numeric vector, and a 2 x 2 matrix.</p>
+
+<p>2) Extract the third and first elements of the list,
+   in that order.</p>
+
+<p>3) Extract the 2nd element without the elment name.</p>
+
+<p>4) Calculate the length of each element of the list and
+   return the result as a vector.</p>
+
+<h4>Activity 2.9: Factors</h4>
+
+<p>&quot;Factors&quot; is a technique R uses to efficiently encode
+categorical variables.  Factors are primarily used in
+statistical models. Consider that a categorical predictor
+variable, with n distinct possible values, must be
+represented by n-1 dummy (or indicator) variables in the
+model matrix. The factor representation tells R to
+automatically create the dummy variables that are used in,
+e.g., Analyis of Variance (ANOVA) and Analysis of Covariance
+(ANCOVA) models.  Factors are also used for plotting data
+in groups.</p>
+
+<p>Suppose we had a categorical variable with three possible
+values: &quot;animal&quot;, &quot;plant&quot;, or &quot;non-living&quot;.  We&#39;ll use
+<code>sample()</code> to randomly order the character vector.</p>
+
+<pre><code class="r">var &lt;- sample(c(rep(&quot;animal&quot;, 3), rep(&quot;plant&quot;, 2),
+                rep(&quot;non-living&quot;, 4)))
+var
+</code></pre>
+
+<pre><code>[1] &quot;non-living&quot; &quot;plant&quot;      &quot;non-living&quot; &quot;animal&quot;     &quot;non-living&quot;
+[6] &quot;animal&quot;     &quot;animal&quot;     &quot;plant&quot;      &quot;non-living&quot;
+</code></pre>
+
+<p>We could create a factor vector as follows:</p>
+
+<pre><code class="r">f1 &lt;- factor(var)
+f1
+</code></pre>
+
+<pre><code>[1] non-living plant      non-living animal     non-living animal    
+[7] animal     plant      non-living
+Levels: animal non-living plant
+</code></pre>
+
+<p>Notice in the structure, we see levels and the numeric
+encodings of the categorical values.</p>
+
+<pre><code class="r">str(f1)
+</code></pre>
+
+<pre><code> Factor w/ 3 levels &quot;animal&quot;,&quot;non-living&quot;,..: 2 3 2 1 2 1 1 3 2
+</code></pre>
+
+<p>Factors have a nice summary() method that counts the number
+of elements that occur in each level</p>
+
+<pre><code class="r">summary(f1)
+</code></pre>
+
+<pre><code>    animal non-living      plant 
+         3          4          2 
+</code></pre>
+
+<p>We can extract the levels from the factor vector.  Note how
+they appear in alphabetical order by default.</p>
+
+<pre><code class="r">levels(f1)
+</code></pre>
+
+<pre><code>[1] &quot;animal&quot;     &quot;non-living&quot; &quot;plant&quot;     
+</code></pre>
+
+<p>In this case, this means that &quot;animal&quot; is assigned a value of
+1, &quot;non-living&quot; a value of 2, and &quot;plant&quot; a value of 3.  We
+can see the numerical encodings by using <code>as.numeric()</code>.</p>
+
+<pre><code class="r">as.numeric(f1)
+</code></pre>
+
+<pre><code>[1] 2 3 2 1 2 1 1 3 2
+</code></pre>
+
+<p>And we can pair the codings side-by-side in a data frame
+with the original character vector to see the mapping.</p>
+
+<pre><code class="r">data.frame(original = var, numerical.coding = as.numeric(f1))
+</code></pre>
+
+<pre><code>    original numerical.coding
+1 non-living                2
+2      plant                3
+3 non-living                2
+4     animal                1
+5 non-living                2
+6     animal                1
+7     animal                1
+8      plant                3
+9 non-living                2
+</code></pre>
+
+<p>Suppose we prefer a different mapping: plant = 1, animal = 2,
+and non-living = 3. This will do the trick:</p>
+
+<pre><code class="r">f2 &lt;- factor(var, levels = c(&quot;plant&quot;, &quot;animal&quot;, &quot;non-living&quot;))
+</code></pre>
+
+<p>And we can see the new mapping:</p>
+
+<pre><code class="r">data.frame(original = var, numerical.coding = as.numeric(f2))
+</code></pre>
+
+<pre><code>    original numerical.coding
+1 non-living                3
+2      plant                1
+3 non-living                3
+4     animal                2
+5 non-living                3
+6     animal                2
+7     animal                2
+8      plant                1
+9 non-living                3
+</code></pre>
+
+<p>We subset factors by referencing their level names, not their
+numerical coding.  For example if we wanted to identify the
+elements that were &quot;plants&quot;, we could do the following:</p>
+
+<pre><code class="r">f2 == &quot;plant&quot;
+</code></pre>
+
+<pre><code>[1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+</code></pre>
+
+<p>Or, to get the index numbers:</p>
+
+<pre><code class="r">which(f2 == &quot;plant&quot;)
+</code></pre>
+
+<pre><code>[1] 2 8
+</code></pre>
+
+<p>If the original data that were used to create a factor are
+character, converting the factor back to a character vector
+is straightforward using <code>as.character()</code>:</p>
+
+<pre><code class="r">varRestored1 &lt;- as.character(f1)
+identical(var, varRestored1)
+</code></pre>
+
+<pre><code>[1] TRUE
+</code></pre>
+
+<p>And this back-conversion works regardles of how the levels
+were specified:</p>
+
+<pre><code class="r">varRestored2 &lt;- as.character(f2)
+identical(var, varRestored2)
+</code></pre>
+
+<pre><code>[1] TRUE
+</code></pre>
+
+<p>We can also create factors from numeric variables as well
+(provided the variable has a limited number of distinct
+values).</p>
+
+<pre><code class="r">numVar &lt;- rep(4:1, each = 2)
+numVar
+</code></pre>
+
+<pre><code>[1] 4 4 3 3 2 2 1 1
+</code></pre>
+
+<pre><code class="r">f3 &lt;- factor(numVar)
+f3
+</code></pre>
+
+<pre><code>[1] 4 4 3 3 2 2 1 1
+Levels: 1 2 3 4
+</code></pre>
+
+<p>If the original data that were used to create a factor are
+numeric, we have to take some special steps to properly
+convert the factor back to its original integer (or numeric)
+values.</p>
+
+<pre><code class="r">numVarRestored &lt;- as.integer(levels(f3)[f3])
+identical(numVarRestored, numVar)
+</code></pre>
+
+<pre><code>[1] TRUE
+</code></pre>
+
+<p>And we can even give levels new names, or labels.
+Suppose we want 1 = &quot;good&quot;, 2 = &quot;bad&quot;, 3 = &quot;ugly&quot;, and 4 = &quot;obnoxious&quot;.</p>
+
+<pre><code class="r">f4 &lt;- factor(numVar, levels = 1:4,
+             labels = c(&quot;good&quot;, &quot;bad&quot;, &quot;ugly&quot;, &quot;obnoxious&quot;))
+</code></pre>
+
+<p>Let&#39;s check it out in a variety of ways:</p>
+
+<pre><code class="r">f4
+</code></pre>
+
+<pre><code>[1] obnoxious obnoxious ugly      ugly      bad       bad       good     
+[8] good     
+Levels: good bad ugly obnoxious
+</code></pre>
+
+<pre><code class="r">str(f4)
+</code></pre>
+
+<pre><code> Factor w/ 4 levels &quot;good&quot;,&quot;bad&quot;,&quot;ugly&quot;,..: 4 4 3 3 2 2 1 1
+</code></pre>
+
+<pre><code class="r">data.frame(original = numVar, numerical.coding = as.numeric(f4),
+           labels = as.character(f4))
+</code></pre>
+
+<pre><code>  original numerical.coding    labels
+1        4                4 obnoxious
+2        4                4 obnoxious
+3        3                3      ugly
+4        3                3      ugly
+5        2                2       bad
+6        2                2       bad
+7        1                1      good
+8        1                1      good
+</code></pre>
+
+<p>We can also create a new mapping:  2 = &quot;good&quot;, 1 = &quot;bad&quot;,
+4 = &quot;ugly&quot;, and 3 = &quot;obnoxious&quot;.</p>
+
+<pre><code class="r">f5 &lt;- factor(numVar, levels = c(2, 1, 4, 3),
+             labels = c(&quot;good&quot;, &quot;bad&quot;, &quot;ugly&quot;, &quot;obnoxious&quot;))
+f5
+</code></pre>
+
+<pre><code>[1] ugly      ugly      obnoxious obnoxious good      good      bad      
+[8] bad      
+Levels: good bad ugly obnoxious
+</code></pre>
+
+<pre><code class="r">data.frame(original = numVar, numerical.coding = as.numeric(f5),
+           labels = as.character(f5))
+</code></pre>
+
+<pre><code>  original numerical.coding    labels
+1        4                3      ugly
+2        4                3      ugly
+3        3                4 obnoxious
+4        3                4 obnoxious
+5        2                1      good
+6        2                1      good
+7        1                2       bad
+8        1                2       bad
+</code></pre>
+
+<p>As before, if we want to reference elements of the factor, for
+the purpose of subsetting, we have to use the level labels:</p>
+
+<pre><code class="r">subsetLogical &lt;- f5 == &quot;good&quot;
+subsetIndexes &lt;- which(f5 %in% c(&quot;good&quot;, &quot;ugly&quot;))
+</code></pre>
+
+<p>And we can then subset the factor accordingly:</p>
+
+<pre><code class="r">f5[subsetLogical]
+</code></pre>
+
+<pre><code>[1] good good
+Levels: good bad ugly obnoxious
+</code></pre>
+
+<pre><code class="r">f5[subsetIndexes]
+</code></pre>
+
+<pre><code>[1] ugly ugly good good
+Levels: good bad ugly obnoxious
+</code></pre>
+
+<p>Let&#39;s see how levels work in practice with ANOVA. Let&#39;s
+first cook up some fake data from the standard normal
+distribution to go with our numerical factor.</p>
+
+<pre><code class="r">x &lt;- rnorm(length(numVar))
+</code></pre>
+
+<p>And then we&#39;ll look at the coefficients of an ANOVA model and
+how R labels them based on the factor levels.  First, we
+fit the ANOVA model:</p>
+
+<pre><code class="r">m1 &lt;- lm(x ~ f3)
+</code></pre>
+
+<p>Notice how the parameter (coefficient) names of the ANOVA
+model are <code>f3</code> with the levels of <code>f3</code> appended to them
+(except for the first level, which is captured in the
+intercept).</p>
+
+<pre><code class="r">coef(m1)
+</code></pre>
+
+<pre><code>(Intercept)         f32         f33         f34 
+ -0.5344446  -0.1839773   1.0074428   0.8423526 
+</code></pre>
+
+<pre><code class="r">levels(f3)
+</code></pre>
+
+<pre><code>[1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot;
+</code></pre>
+
+<p>And here we have <code>f4</code> with the levels of <code>f4</code> appended</p>
+
+<pre><code class="r">coef(lm(x ~ f4))
+</code></pre>
+
+<pre><code>(Intercept)       f4bad      f4ugly f4obnoxious 
+ -0.5344446  -0.1839773   1.0074428   0.8423526 
+</code></pre>
+
+<pre><code class="r">levels(f4)
+</code></pre>
+
+<pre><code>[1] &quot;good&quot;      &quot;bad&quot;       &quot;ugly&quot;      &quot;obnoxious&quot;
+</code></pre>
+
+<h4>Exercise 2.9: Factors</h4>
+
+<p>1) Create a numeric vector with arbitrarily repeated
+   values of 1.2, 3, and 7.9.</p>
+
+<p>2) Create the numeric vector to a factor, where 3 will be
+   numerically encoded as a 1, 7.9 as a 2, and 1.2 as 3.
+   Display the numerical encoding.</p>
+
+<p>3) Display the levels of the factor.</p>
+
+<p>4) Convert the factor back to the original numerical vector.</p>
+
+<p>5) Create a subset of the factor when it equals 1.2 or 3.</p>
+
+</div>
+
+
+<div class='tab-pane' id='activity-3-readingwriting-to-disc-installing-packages-writing-functions'>
+<h3>Activity 3: Reading/writing to disc, installing packages, writing functions</h3>
+
+<h4>Activity 3.1: Working directory and sourcing files</h4>
+
+<p>The code samples above assume the data files are located in
+the R working directory, which can be found with the
+function <code>getwd()</code>.</p>
+
+<pre><code class="r">getwd()
+</code></pre>
+
+<p>All files visible from R should be accessed relative to the
+working directory.</p>
+
+<p>Let&#39;s create a new directory and then set it as the
+working directory</p>
+
+<pre><code class="r">dir.create(&quot;working_tmp&quot;)
+setwd(&quot;working_tmp&quot;)
+getwd()
+</code></pre>
+
+<p>Write a one-line text file (&#39;\n&#39; means new line).</p>
+
+<pre><code class="r">cat(&quot;This is one-line file\n&quot;, file = &quot;tmpFile.txt&quot;)
+</code></pre>
+
+<p>Now look at the contents of the directory.</p>
+
+<pre><code class="r">dir()
+</code></pre>
+
+<p>Delete the file.</p>
+
+<pre><code class="r">unlink(&quot;tmpFile.txt&quot;)
+</code></pre>
+
+<p>Notice how the file is no longer there:</p>
+
+<pre><code class="r">dir()
+</code></pre>
+
+<p>Go back to the original working directory.  The &quot;../&quot; is the
+Unix/Linux notation for moving up one directory.  This
+syntax will work in Windows too.</p>
+
+<pre><code class="r">setwd(&quot;../&quot;)
+</code></pre>
+
+<p>Note that the forward slash should be used as the path
+separator even on Windows, for example:
+<code>setwd(&quot;C:/Users/Me/Documents&quot;)</code></p>
+
+<p>When you have a large amount of code in a separate file that
+you&#39;d like to run all at once, use the <code>source()</code> function.
+Let&#39;s illustrate by writing some R code to a text file using
+<code>cat()</code>. The &quot;\n&quot; are newline characters.</p>
+
+<pre><code class="r">cat(&quot;x &lt;- 10\n&quot;,
+    &quot;y &lt;- 20\n&quot;,
+    &quot;x + y&quot;,
+    sep = &quot;&quot;,
+    file = &quot;tmp1_code.R&quot;)
+</code></pre>
+
+<p>Now &quot;tmp1_code.R&quot; should be in your working directory.  We
+can verify using <code>dir()</code>.</p>
+
+<pre><code class="r">dir(pattern = &quot;tmp1_&quot;)
+</code></pre>
+
+<pre><code>[1] &quot;tmp1_code.R&quot;
+</code></pre>
+
+<p>Now we can source (i.e. run) the code in the file.  The
+<code>echo</code> argument displays each line as it runs.</p>
+
+<pre><code class="r">source(&quot;tmp1_code.R&quot;, echo = TRUE)
+</code></pre>
+
+<pre><code>
+&gt; x &lt;- 10
+
+&gt; y &lt;- 20
+
+&gt; x + y
+[1] 30
+</code></pre>
+
+<p>Having sourced the file, let&#39;s remove it.</p>
+
+<pre><code class="r">unlink(&quot;tmp1_code.R&quot;)
+</code></pre>
+
+<h4>Activity 3.2: Read and write data to/from disc</h4>
+
+<p>There are lots of ways to read data into R.  One of the
+easiest is to write your data (perhaps from Excel) to a csv
+(Comma Separated Variable) file and then read it into R.</p>
+
+<p>Save the <a href="#data">nf-week2-sample.csv file</a>.  Then
+read in 20 rows of NetFlow data from local disk
+into local a data frame object that we&#39;ll call nfHead.</p>
+
+<pre><code class="r">nfHead &lt;- read.csv(&quot;nf-week2-sample.csv&quot;, nrows = 20)
+</code></pre>
+
+<p>Depending on where you saved (or uploaded) the file,
+you may need to either change the working directory using
+<code>setwd()</code> or you could specify the location of the file
+by prepending its path, like this:</p>
+
+<pre><code class="r">nfHead &lt;- read.csv(&quot;~/path/toData/nf-week2-sample.csv&quot;, nrows = 20)
+</code></pre>
+
+<p>Look at the structure of nfHead.  Notice that by default,
+R converts all character variables to factors, because the
+data can be stored more efficiently that way.</p>
+
+<pre><code class="r">str(nfHead)
+</code></pre>
+
+<pre><code>&#39;data.frame&#39;:   20 obs. of  19 variables:
+ $ TimeSeconds              : num  1.37e+09 1.37e+09 1.37e+09 1.37e+09 1.37e+09 ...
+ $ parsedDate               : Factor w/ 1 level &quot;2013-04-10 08:32:36&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ dateTimeStr              : num  2.01e+13 2.01e+13 2.01e+13 2.01e+13 2.01e+13 ...
+ $ ipLayerProtocol          : int  17 17 17 17 17 17 17 17 17 17 ...
+ $ ipLayerProtocolCode      : Factor w/ 1 level &quot;UDP&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ firstSeenSrcIp           : Factor w/ 20 levels &quot;172.20.2.10&quot;,..: 9 8 7 6 5 4 3 2 1 15 ...
+ $ firstSeenDestIp          : Factor w/ 1 level &quot;239.255.255.250&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ firstSeenSrcPort         : int  29987 29986 29985 29984 29983 29982 29981 29980 29979 29978 ...
+ $ firstSeenDestPort        : int  1900 1900 1900 1900 1900 1900 1900 1900 1900 1900 ...
+ $ moreFragments            : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ contFragments            : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ durationSeconds          : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ firstSeenSrcPayloadBytes : int  133 133 133 133 133 133 133 133 133 133 ...
+ $ firstSeenDestPayloadBytes: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ firstSeenSrcTotalBytes   : int  175 175 175 175 175 175 175 175 175 175 ...
+ $ firstSeenDestTotalBytes  : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ firstSeenSrcPacketCount  : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ firstSeenDestPacketCount : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ recordForceOut           : int  0 0 0 0 0 0 0 0 0 0 ...
+</code></pre>
+
+<p>We can surpress this behavior by using the
+<code>stringsAsFactors = FALSE</code> argument in <code>read.csv()</code>.</p>
+
+<pre><code class="r">nfHead &lt;- read.csv(&quot;nf-week2-sample.csv&quot;, nrows = 20,
+                   stringsAsFactors = FALSE)
+</code></pre>
+
+<p>Notice that the factor variables are now character.</p>
+
+<pre><code class="r">str(nfHead)
+</code></pre>
+
+<pre><code>&#39;data.frame&#39;:   20 obs. of  19 variables:
+ $ TimeSeconds              : num  1.37e+09 1.37e+09 1.37e+09 1.37e+09 1.37e+09 ...
+ $ parsedDate               : chr  &quot;2013-04-10 08:32:36&quot; &quot;2013-04-10 08:32:36&quot; &quot;2013-04-10 08:32:36&quot; &quot;2013-04-10 08:32:36&quot; ...
+ $ dateTimeStr              : num  2.01e+13 2.01e+13 2.01e+13 2.01e+13 2.01e+13 ...
+ $ ipLayerProtocol          : int  17 17 17 17 17 17 17 17 17 17 ...
+ $ ipLayerProtocolCode      : chr  &quot;UDP&quot; &quot;UDP&quot; &quot;UDP&quot; &quot;UDP&quot; ...
+ $ firstSeenSrcIp           : chr  &quot;172.20.2.19&quot; &quot;172.20.2.18&quot; &quot;172.20.2.17&quot; &quot;172.20.2.16&quot; ...
+ $ firstSeenDestIp          : chr  &quot;239.255.255.250&quot; &quot;239.255.255.250&quot; &quot;239.255.255.250&quot; &quot;239.255.255.250&quot; ...
+ $ firstSeenSrcPort         : int  29987 29986 29985 29984 29983 29982 29981 29980 29979 29978 ...
+ $ firstSeenDestPort        : int  1900 1900 1900 1900 1900 1900 1900 1900 1900 1900 ...
+ $ moreFragments            : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ contFragments            : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ durationSeconds          : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ firstSeenSrcPayloadBytes : int  133 133 133 133 133 133 133 133 133 133 ...
+ $ firstSeenDestPayloadBytes: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ firstSeenSrcTotalBytes   : int  175 175 175 175 175 175 175 175 175 175 ...
+ $ firstSeenDestTotalBytes  : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ firstSeenSrcPacketCount  : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ firstSeenDestPacketCount : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ recordForceOut           : int  0 0 0 0 0 0 0 0 0 0 ...
+</code></pre>
+
+<p>Let&#39;s create a new subset of the data and write the results
+back to disk.</p>
+
+<pre><code class="r">nfSub &lt;- nfHead[1:5, c(&quot;parsedDate&quot;, &quot;firstSeenSrcIp&quot;,
+                       &quot;firstSeenSrcTotalBytes&quot;)]
+nfSub
+</code></pre>
+
+<pre><code>           parsedDate firstSeenSrcIp firstSeenSrcTotalBytes
+1 2013-04-10 08:32:36    172.20.2.19                    175
+2 2013-04-10 08:32:36    172.20.2.18                    175
+3 2013-04-10 08:32:36    172.20.2.17                    175
+4 2013-04-10 08:32:36    172.20.2.16                    175
+5 2013-04-10 08:32:36    172.20.2.14                    175
+</code></pre>
+
+<p>Now write the file to disk.</p>
+
+<pre><code class="r">write.csv(nfSub, file = &quot;a_temporary_subset.csv&quot;,
+          row.names = FALSE)
+</code></pre>
+
+<p>If we call the <code>dir()</code> function, you should see the new
+csv file listed in the working directory.  If you are
+using a Windows machine, you could open this file in Excel.</p>
+
+<pre><code class="r">dir(pattern = &quot;csv&quot;)
+</code></pre>
+
+<pre><code>[1] &quot;a_temporary_subset.csv&quot; &quot;more_fake_data.csv&quot;    
+[3] &quot;nf-week2-sample.csv&quot;    &quot;some_fake_data.csv&quot;    
+</code></pre>
+
+<p>Now we can delete the file (from R).</p>
+
+<pre><code class="r">unlink(&quot;a_temporary_subset.csv&quot;)
+</code></pre>
+
+<p>We can also save nfSub as an R data object, this will only
+be readable by R. (But it will be readable by R on any
+operating system:  Windows, Mac, or Linux).</p>
+
+<pre><code class="r">save(nfSub, file = &quot;a_temporary_subset.Rdata&quot;)
+dir(pattern = &quot;Rdata&quot;)
+</code></pre>
+
+<pre><code>[1] &quot;a_temporary_subset.Rdata&quot;
+</code></pre>
+
+<p>And since we&#39;ve saved it, we can remove the data frame from
+R&#39;s memory.</p>
+
+<pre><code class="r">rm(nfSub)
+</code></pre>
+
+<p>If we want to load some existing data that are stored in
+the Rdata format, we do the following:</p>
+
+<pre><code class="r">objectName &lt;- load(&quot;a_temporary_subset.Rdata&quot;)
+</code></pre>
+
+<p>Note that <code>objectName</code> is a character vector that indicates
+the name(s) of the R object(s) that were read from the Rdata
+file.</p>
+
+<pre><code class="r">objectName
+</code></pre>
+
+<pre><code>[1] &quot;nfSub&quot;
+</code></pre>
+
+<p>And a call to <code>ls()</code> shows us the <code>nfSub</code> object exists in R&#39;s
+memory.</p>
+
+<pre><code class="r">&quot;nfSub&quot; %in% ls()
+</code></pre>
+
+<pre><code>[1] TRUE
+</code></pre>
+
+<p>And if you need more convicing it&#39;s really there:
+<code>head()</code> lets us look at the first 6 lines of an object</p>
+
+<pre><code class="r">head(nfSub)
+</code></pre>
+
+<pre><code>           parsedDate firstSeenSrcIp firstSeenSrcTotalBytes
+1 2013-04-10 08:32:36    172.20.2.19                    175
+2 2013-04-10 08:32:36    172.20.2.18                    175
+3 2013-04-10 08:32:36    172.20.2.17                    175
+4 2013-04-10 08:32:36    172.20.2.16                    175
+5 2013-04-10 08:32:36    172.20.2.14                    175
+</code></pre>
+
+<p>And now we delete the Rdata file on disk.</p>
+
+<pre><code class="r">unlink(&quot;a_temporary_subset.Rdata&quot;)
+</code></pre>
+
+<h4>Exercise 3.2: Read and write data to/from disc</h4>
+
+<p>1) Save the file <a href="#data">some_fake_data.csv</a> to you computer (and upload 
+   it if necessary to the RStudio server). Verify that the file <strong>some_fake_data.csv</strong> is in your
+   working directory using <code>dir()</code>.</p>
+
+<p>2) Read the file <strong>some_fake_data.csv</strong> to a data frame.</p>
+
+<p>2) Create a subset of the data by selecting the
+   first and last columns whenever the second column is
+   less than 7.  Try to use the column names when
+   accessing the data frame, as it&#39;s generally a better
+   programming practice.</p>
+
+<p>3) Write the resulting data frame to a new csv file, called
+   <strong>more_fake_data.csv</strong>.  Use the <code>write.csv()</code> function.</p>
+
+<h4>Activity 3.3: Installing packages</h4>
+
+<p>Often times, you&#39;ll want to use methods or functions in
+R that are available only through contributed packages that
+don&#39;t come pre-installed with R.  The <code>xtable</code> package is an
+example of a widely used package that converts data frames
+and matrices into <a href="https://www.latex-project.org">LaTeX</a> or html tables.</p>
+
+<p>To install <code>xtable</code>, we use the <code>install.packages()</code> function.
+The <code>repos</code> argument allows you to specify a 
+<a href="https://cran.r-project.org/mirrors.html">CRAN mirror</a>.  For this
+example, we&#39;ll use the CRAN mirror at the Fred Hutchinson
+Cancer Research Center.
+If you omit the <code>repos</code> argument, R will prompt you with a
+pop-up window to select a CRAN mirror. Typically, you want
+to choose a mirror that is geographically close to you.
+During the installation, you may be prompted to
+install to a <strong>personal library</strong>, to which should say <strong>yes</strong>.</p>
+
+<pre><code class="r">install.packages(&quot;xtable&quot;, repos = &quot;http://cran.fhcrc.org&quot;)
+</code></pre>
+
+<p>Once we have installed the <code>xtable</code> package, we need
+to load it with <code>library()</code> in order to use it.  </p>
+
+<pre><code class="r">library(xtable)
+</code></pre>
+
+<p>All good packages have documentation for their functions.
+Let&#39;s look at the help for the <code>xtable()</code> function.</p>
+
+<pre><code class="r">?xtable
+</code></pre>
+
+<p>Suppose we wanted to create an html table for
+a portion of the <code>mtcars</code> data with the vehicles that have
+high power and relatively good gas mileage:</p>
+
+<pre><code class="r">indicator &lt;- (mtcars[,&quot;hp&quot;] &gt; 150) &amp; (mtcars[,&quot;mpg&quot;] &gt; 15)
+mtSub &lt;- mtcars[indicator, c(&quot;hp&quot;, &quot;mpg&quot;)]
+</code></pre>
+
+<p>Now create the html table that we can copy and paste to
+an html editor using <code>xtable()</code> from the xtable package.</p>
+
+<pre><code class="r">mtSub.xtable &lt;- xtable(mtSub)
+print(mtSub.xtable, type = &quot;html&quot;)
+</code></pre>
+
+<pre><code>&lt;!-- html table generated in R 3.2.2 by xtable 1.7-4 package --&gt;
+&lt;!-- Tue Sep 22 04:44:47 2015 --&gt;
+&lt;table border=1&gt;
+&lt;tr&gt; &lt;th&gt;  &lt;/th&gt; &lt;th&gt; hp &lt;/th&gt; &lt;th&gt; mpg &lt;/th&gt;  &lt;/tr&gt;
+  &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; Hornet Sportabout &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 175.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 18.70 &lt;/td&gt; &lt;/tr&gt;
+  &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; Merc 450SE &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 180.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 16.40 &lt;/td&gt; &lt;/tr&gt;
+  &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; Merc 450SL &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 180.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 17.30 &lt;/td&gt; &lt;/tr&gt;
+  &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; Merc 450SLC &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 180.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 15.20 &lt;/td&gt; &lt;/tr&gt;
+  &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; Pontiac Firebird &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 175.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 19.20 &lt;/td&gt; &lt;/tr&gt;
+  &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; Ford Pantera L &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 264.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 15.80 &lt;/td&gt; &lt;/tr&gt;
+  &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; Ferrari Dino &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 175.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 19.70 &lt;/td&gt; &lt;/tr&gt;
+   &lt;/table&gt;
+</code></pre>
+
+<p>We can also render the table for use in a LaTeX document:</p>
+
+<pre><code class="r">print(mtSub.xtable)
+</code></pre>
+
+<pre><code>% latex table generated in R 3.2.2 by xtable 1.7-4 package
+% Tue Sep 22 04:44:47 2015
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrr}
+  \hline
+ &amp; hp &amp; mpg \\ 
+  \hline
+Hornet Sportabout &amp; 175.00 &amp; 18.70 \\ 
+  Merc 450SE &amp; 180.00 &amp; 16.40 \\ 
+  Merc 450SL &amp; 180.00 &amp; 17.30 \\ 
+  Merc 450SLC &amp; 180.00 &amp; 15.20 \\ 
+  Pontiac Firebird &amp; 175.00 &amp; 19.20 \\ 
+  Ford Pantera L &amp; 264.00 &amp; 15.80 \\ 
+  Ferrari Dino &amp; 175.00 &amp; 19.70 \\ 
+   \hline
+\end{tabular}
+\end{table}
+</code></pre>
+
+<h4>Activity 3.4: Making your own functions</h4>
+
+<p>Functions are the core computational unit of R.  To the
+extent possble, good R coders divide their work into modular,
+generalizable, and reusable pieces of code that are
+often writen as functions.</p>
+
+<p>All functions in R have inputs (arguments) and outputs
+(values).  Let&#39;s define a function called <code>simple()</code> that
+adds two numbers together and substracts 7.</p>
+
+<pre><code class="r">simple &lt;- function(x, y) {
+  return(x + y - 7)
+}
+</code></pre>
+
+<p>To display the function, simply type it&#39;s name.</p>
+
+<pre><code class="r">simple
+</code></pre>
+
+<pre><code>function(x, y) {
+  return(x + y - 7)
+}
+&lt;environment: 0x7fe1f4c59ad8&gt;
+</code></pre>
+
+<p>To call the function, add in parameter values for x and y.</p>
+
+<pre><code class="r">simple(4, 7)
+</code></pre>
+
+<pre><code>[1] 4
+</code></pre>
+
+<p>Note how we can put vectors in the arguments.</p>
+
+<pre><code class="r">simple(1:3, 5:7)
+</code></pre>
+
+<pre><code>[1] -1  1  3
+</code></pre>
+
+<p>Here&#39;s function with both unnamed and named arguments and
+some if/else statements.  Notice the indentation! This is
+a standard coding practice for readability.  Here, <code>x</code> is an
+unnamed argument, and <code>method</code> is a &#39;named&#39; argument because
+it has a default value.</p>
+
+<pre><code class="r">simp1 &lt;- function(x, method = &quot;sum&quot;) {
+
+  if (method == &quot;sum&quot;) {
+    out &lt;- sum(x)
+  }
+  else if (method == &quot;prod&quot;) {
+    out &lt;- prod(x)
+  }
+  else {
+    stop(&quot;&#39;method&#39; must be &#39;sum&#39; or &#39;prod&#39;&quot;)
+  }
+
+  return(out)
+
+}
+</code></pre>
+
+<p>Let&#39;s try it using the default for the <code>method</code> argument.
+Note that the unnamed argument, <code>x</code>, must be supplied in
+order for the function to be called, whereas the named
+argument, <code>method</code>, will use the default value if nothing
+is supplied for it.</p>
+
+<pre><code class="r">simp1(1:7)
+</code></pre>
+
+<pre><code>[1] 28
+</code></pre>
+
+<p>Equivalenty we could have called:</p>
+
+<pre><code class="r">simp1(1:7, method = &quot;sum&quot;)
+</code></pre>
+
+<pre><code>[1] 28
+</code></pre>
+
+<p>And now for the product, assigning the result to <code>x</code>.</p>
+
+<pre><code class="r">x &lt;- simp1(1:7, method = &quot;prod&quot;)
+x
+</code></pre>
+
+<pre><code>[1] 5040
+</code></pre>
+
+<p>If we choose an incorrect value for <code>method</code>, the function
+will throw the error:</p>
+
+<pre><code class="r">simp1(1:7, method = &quot;granny&quot;)
+</code></pre>
+
+<pre><code>Error in simp1(1:7, method = &quot;granny&quot;): &#39;method&#39; must be &#39;sum&#39; or &#39;prod&#39;
+</code></pre>
+
+<p>Here&#39;s a function with a <code>for</code> loop that returns nothing.
+But it does print the iterations of the loop.  Notice the
+commenting inside the function.  Commenting is essential for
+readability! With liberal use of comments, you (at the
+very least) will know what you were doing if you revisit
+the code in the future.</p>
+
+<pre><code class="r">simp2 &lt;- function(begin, long = TRUE) {
+
+  # Determine the value of &#39;end&#39; depending on the value of
+  # &#39;long&#39;
+  if (long) {
+    end &lt;- begin + 10
+  }
+  else {
+    end &lt;- begin + 5
+  }
+
+  # A for loop from begin to end that prints each value in the
+  # loop
+  for (i in begin:end) {
+    cat(&quot;Iteration&quot;, i, &quot;\n&quot;)
+  }
+
+}
+</code></pre>
+
+<p>Call it long:</p>
+
+<pre><code class="r">simp2(3)
+</code></pre>
+
+<pre><code>Iteration 3 
+Iteration 4 
+Iteration 5 
+Iteration 6 
+Iteration 7 
+Iteration 8 
+Iteration 9 
+Iteration 10 
+Iteration 11 
+Iteration 12 
+Iteration 13 
+</code></pre>
+
+<p>Call it short:</p>
+
+<pre><code class="r">simp2(3, long = FALSE)
+</code></pre>
+
+<pre><code>Iteration 3 
+Iteration 4 
+Iteration 5 
+Iteration 6 
+Iteration 7 
+Iteration 8 
+</code></pre>
+
+<p>In some cases, you need to return more than one object from
+your function.  The standard way to do this in R is to
+return a list.  (MANY of the base and contributed
+functions in R return lists).  Here&#39;s how:</p>
+
+<pre><code class="r">simp3 &lt;- function(x, y) {
+
+  return(list(sum = x + y,
+              product = x * y,
+              quotient = x / y))
+
+}
+</code></pre>
+
+<p>Upon calling the function, notice it how the named list is
+returned.</p>
+
+<pre><code class="r">simp3(3, 7)
+</code></pre>
+
+<pre><code>$sum
+[1] 10
+
+$product
+[1] 21
+
+$quotient
+[1] 0.4285714
+</code></pre>
+
+<p>We can call it and extract the <code>sum</code> from the list.</p>
+
+<pre><code class="r">simp3(3, 7)$sum
+</code></pre>
+
+<pre><code>[1] 10
+</code></pre>
+
+<p>Or you can extract using brackets:</p>
+
+<pre><code class="r">simp3(3, 7)[&quot;sum&quot;]
+</code></pre>
+
+<pre><code>$sum
+[1] 10
+</code></pre>
+
+<pre><code class="r">simp3(3, 7)[1]
+</code></pre>
+
+<pre><code>$sum
+[1] 10
+</code></pre>
+
+<p>And recall, if you want to strip the label name, use the
+double brackets [[]]:</p>
+
+<pre><code class="r">simp3(3, 7)[[&quot;sum&quot;]]
+</code></pre>
+
+<pre><code>[1] 10
+</code></pre>
+
+<pre><code class="r">simp3(3, 7)[[1]]
+</code></pre>
+
+<pre><code>[1] 10
+</code></pre>
+
+<p>Or call it, assign the output to an object, and then extract
+the last two elements:</p>
+
+<pre><code class="r">y &lt;- simp3(3, 7)
+y[2:3]
+</code></pre>
+
+<pre><code>$product
+[1] 21
+
+$quotient
+[1] 0.4285714
+</code></pre>
+
+<p>Many R coders do not use the <code>return()</code> function at the end
+of their function definitions. I prefer to use <code>return()</code> for
+readability and clarity of the code but, technically, it is
+redundant.  The last object that is stated at the end of the
+function is automatically returned, as illustrated here:</p>
+
+<pre><code class="r">simp4 &lt;- function(x, y) {
+
+    z1 &lt;- x + 7
+    z2 &lt;- z1 * y
+
+    # z2 is returned
+    z2
+
+}
+</code></pre>
+
+<p>Call the function.</p>
+
+<pre><code class="r">simp4(3, -2)
+</code></pre>
+
+<pre><code>[1] -20
+</code></pre>
+
+<p>What if the output you return from a function is so large
+you would never want to have it displayed on the screen?  R
+has a nice trick for this:  the <code>invisible()</code> function.</p>
+
+<pre><code class="r">simp5 &lt;- function(n) {
+
+  # Make a vector
+  x &lt;- 1:n
+
+  # Write a message that tells you the mean of the vector
+  cat(&quot;The mean of the numbers from 1 to&quot;, n, &quot;is&quot;, mean(x),
+      &quot;\n&quot;)
+
+  # Invisibly return the vector
+  invisible(x)
+
+}
+</code></pre>
+
+<p>Now, if I call the function without assigning it to an
+object, the value <code>x</code> is not returned.  Only the <code>cat()</code>
+statement is printed.</p>
+
+<pre><code class="r">simp5(100)
+</code></pre>
+
+<pre><code>The mean of the numbers from 1 to 100 is 50.5 
+</code></pre>
+
+<p>But if I assign it to an object, the vector is returned
+and assigned to the object.</p>
+
+<pre><code class="r">y &lt;- simp5(100)
+</code></pre>
+
+<pre><code>The mean of the numbers from 1 to 100 is 50.5 
+</code></pre>
+
+<pre><code class="r">head(y)
+</code></pre>
+
+<pre><code>[1] 1 2 3 4 5 6
+</code></pre>
+
+<pre><code class="r">tail(y)
+</code></pre>
+
+<pre><code>[1]  95  96  97  98  99 100
+</code></pre>
+
+<p>Functions can also be defined without arguments.  A common
+reason to do this might be to wrap a large script into a
+single unit of code.  This can be especially helpful
+if you need to write code with control statements (e.g.,
+if/then/else statements, for/while loops, etc.).  Control
+statements behave better in R if they are encapsulated
+within a function.</p>
+
+<pre><code class="r">simp6 &lt;- function() {
+
+  # Take 1 random draw from a poisson distribution with mean 20
+  aRandomPoissonNumber &lt;- rpois(1, lambda = 20)
+
+  # Create some text to return
+  textToReturn &lt;- paste(&quot;A random Poisson variate:&quot;,
+                        aRandomPoissonNumber)
+
+  # Return the text string
+  return(textToReturn)
+
+}
+</code></pre>
+
+<p>Call it</p>
+
+<pre><code class="r">simp6()
+</code></pre>
+
+<pre><code>[1] &quot;A random Poisson variate: 22&quot;
+</code></pre>
+
+<pre><code class="r">simp6()
+</code></pre>
+
+<pre><code>[1] &quot;A random Poisson variate: 21&quot;
+</code></pre>
+
+<h4>Exercise 3.4: Making your own functions</h4>
+
+<p>1) Create a function that takes two numerical, unnamed
+   arguments, (say, <code>x</code> and <code>y</code>) and a single named argument
+   that will determine whether your function multiplies
+   (the default) or divides your two numeric arguments,
+   <code>x</code> and <code>y</code>.</p>
+
+<p>2) Call the function using scalar inputs for <code>x</code> and <code>y</code>
+   such that <code>x</code> is multiplied by <code>y</code>.</p>
+
+<p>3) Call the function using vector inputs for <code>x</code> and <code>y</code>
+   such that <code>x</code> is divided by <code>y</code>.</p>
+
+</div>
+
+
+<div class='tab-pane' id='activity-4-statistical-and-graphical-analyses'>
+<h3>Activity 4: Statistical and graphical analyses</h3>
+
+<h4>Activity 4.1: A simple linear regression model</h4>
+
+<p>Let&#39;s now consider fitting a simple linear regression model
+to some car data that compares stopping distance to speed
+for 50 vehicles.</p>
+
+<p>Because these data are available in base R, we don&#39;t have to
+load the data or read it from a file.  We can simply access
+it by typing <code>cars</code>.</p>
+
+<p>Look at the structure of the cars data.</p>
+
+<pre><code class="r">str(cars)
+</code></pre>
+
+<pre><code>&#39;data.frame&#39;:   50 obs. of  2 variables:
+ $ speed: num  4 4 7 7 8 9 10 10 10 11 ...
+ $ dist : num  2 10 4 22 16 10 18 26 34 17 ...
+</code></pre>
+
+<p>Now that we know what the column names are, let&#39;s plot the
+data.</p>
+
+<pre><code class="r">plot(cars[, &quot;speed&quot;], cars[, &quot;dist&quot;], xlab = &quot;Speed&quot;, ylab = &quot;Distance&quot;)
+</code></pre>
+
+<p><img src="figures/knitr/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+<p>Now let&#39;s fit a simple linear regression model, and use
+speed to predict the stopping distance.  We use the linear
+model function, <code>lm()</code>.</p>
+
+<pre><code class="r">slrModel &lt;- lm(dist ~ speed, data = cars)
+</code></pre>
+
+<p>If we call <code>str()</code> on <code>slrModel</code>, we see that it is a
+complicated R object called a list.</p>
+
+<pre><code class="r">str(slrModel)
+</code></pre>
+
+<pre><code>List of 12
+ $ coefficients : Named num [1:2] -17.58 3.93
+  ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;(Intercept)&quot; &quot;speed&quot;
+ $ residuals    : Named num [1:50] 3.85 11.85 -5.95 12.05 2.12 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:50] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ effects      : Named num [1:50] -303.914 145.552 -8.115 9.885 0.194 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:50] &quot;(Intercept)&quot; &quot;speed&quot; &quot;&quot; &quot;&quot; ...
+ $ rank         : int 2
+ $ fitted.values: Named num [1:50] -1.85 -1.85 9.95 9.95 13.88 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:50] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ assign       : int [1:2] 0 1
+ $ qr           :List of 5
+  ..$ qr   : num [1:50, 1:2] -7.071 0.141 0.141 0.141 0.141 ...
+  .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. ..$ : chr [1:50] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+  .. .. ..$ : chr [1:2] &quot;(Intercept)&quot; &quot;speed&quot;
+  .. ..- attr(*, &quot;assign&quot;)= int [1:2] 0 1
+  ..$ qraux: num [1:2] 1.14 1.27
+  ..$ pivot: int [1:2] 1 2
+  ..$ tol  : num 1e-07
+  ..$ rank : int 2
+  ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;
+ $ df.residual  : int 48
+ $ xlevels      : Named list()
+ $ call         : language lm(formula = dist ~ speed, data = cars)
+ $ terms        :Classes &#39;terms&#39;, &#39;formula&#39; length 3 dist ~ speed
+  .. ..- attr(*, &quot;variables&quot;)= language list(dist, speed)
+  .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+  .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. .. ..$ : chr [1:2] &quot;dist&quot; &quot;speed&quot;
+  .. .. .. ..$ : chr &quot;speed&quot;
+  .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;speed&quot;
+  .. ..- attr(*, &quot;order&quot;)= int 1
+  .. ..- attr(*, &quot;intercept&quot;)= int 1
+  .. ..- attr(*, &quot;response&quot;)= int 1
+  .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: 0x7fe1f4c59ad8&gt; 
+  .. ..- attr(*, &quot;predvars&quot;)= language list(dist, speed)
+  .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+  .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;dist&quot; &quot;speed&quot;
+ $ model        :&#39;data.frame&#39;:  50 obs. of  2 variables:
+  ..$ dist : num [1:50] 2 10 4 22 16 10 18 26 34 17 ...
+  ..$ speed: num [1:50] 4 4 7 7 8 9 10 10 10 11 ...
+  ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39; length 3 dist ~ speed
+  .. .. ..- attr(*, &quot;variables&quot;)= language list(dist, speed)
+  .. .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+  .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. .. .. ..$ : chr [1:2] &quot;dist&quot; &quot;speed&quot;
+  .. .. .. .. ..$ : chr &quot;speed&quot;
+  .. .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;speed&quot;
+  .. .. ..- attr(*, &quot;order&quot;)= int 1
+  .. .. ..- attr(*, &quot;intercept&quot;)= int 1
+  .. .. ..- attr(*, &quot;response&quot;)= int 1
+  .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: 0x7fe1f4c59ad8&gt; 
+  .. .. ..- attr(*, &quot;predvars&quot;)= language list(dist, speed)
+  .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+  .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;dist&quot; &quot;speed&quot;
+ - attr(*, &quot;class&quot;)= chr &quot;lm&quot;
+</code></pre>
+
+<p>Fortunately, there are a variety of method functions we
+can use to extract information from the <code>slrModel</code> object.
+For example, the <code>summary()</code> function gives the slope, 
+intercept, R-squared, and other statistics.</p>
+
+<pre><code class="r">summary(slrModel)
+</code></pre>
+
+<pre><code>
+Call:
+lm(formula = dist ~ speed, data = cars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-29.069  -9.525  -2.272   9.215  43.201 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -17.5791     6.7584  -2.601   0.0123 *  
+speed         3.9324     0.4155   9.464 1.49e-12 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 15.38 on 48 degrees of freedom
+Multiple R-squared:  0.6511,    Adjusted R-squared:  0.6438 
+F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12
+</code></pre>
+
+<p>We can also extract the coefficients of the model.</p>
+
+<pre><code class="r">coef(slrModel)
+</code></pre>
+
+<pre><code>(Intercept)       speed 
+ -17.579095    3.932409 
+</code></pre>
+
+<p>And we can superimpose the regression line on the plot.
+(Remake the plot of these data first before executing the
+<code>abline()</code> command if you closed the plot.)
+<img src="figures/knitr/unnamed-chunk-7-1.png" alt="plot of chunk unnamed-chunk-7"> </p>
+
+<pre><code class="r">abline(slrModel, col = &quot;Blue&quot;)
+</code></pre>
+
+<p>You can close the current plot using:</p>
+
+<pre><code class="r">dev.off()
+</code></pre>
+
+<pre><code>null device 
+          1 
+</code></pre>
+
+<p>Alternatively, you can close all open plots using:</p>
+
+<pre><code class="r">graphics.off()
+</code></pre>
+
+<h4>Exercise 4.1: A simple linear regression model</h4>
+
+<p>1) Look at the Old Faithful geyser data in Yellowstone
+   National Park.  It&#39;s the <code>faithful</code> dataset available in
+   the base R distribution.  Use <code>help(faithful)</code> or <code>?faithful</code>
+   to see its documentation.</p>
+
+<p>2) Plot the waiting time to the next eruptions vs. the
+   duration of the eruption.</p>
+
+<p>3) Fit a simple linear regression model to predict waiting
+   time from the eruption duration.</p>
+
+<p>4) Overlay the fitted model on the plot with a red line.</p>
+
+<h4>Activity 4.2: Trellis plots</h4>
+
+<p>This example introduces making trellis (or lattice) plots
+using the <code>lattice</code> package and the <code>mtcars</code> dataset.</p>
+
+<p>Load the lattice package (for making trellis plots).</p>
+
+<pre><code class="r">library(lattice)
+</code></pre>
+
+<p>If the <code>lattice</code> package is not installed, you can follow the
+instructions in Activity 4.3 to install it.</p>
+
+<p>For convenience, attaching the data frame places it in the
+search path so that we don&#39;t always have to reference <code>mtcars</code>
+each time we want to extract a column from the data.</p>
+
+<pre><code class="r">attach(mtcars)
+</code></pre>
+
+<p>Now that we&#39;ve attached it, notice how it appears in the
+2nd position of R&#39;s search path:</p>
+
+<pre><code class="r">search()
+</code></pre>
+
+<pre><code> [1] &quot;.GlobalEnv&quot;        &quot;mtcars&quot;            &quot;package:lattice&quot;  
+ [4] &quot;package:xtable&quot;    &quot;package:buildDocs&quot; &quot;package:devtools&quot; 
+ [7] &quot;package:tools&quot;     &quot;package:digest&quot;    &quot;package:knitr&quot;    
+[10] &quot;package:markdown&quot;  &quot;package:whisker&quot;   &quot;ESSR&quot;             
+[13] &quot;package:stats&quot;     &quot;package:graphics&quot;  &quot;package:grDevices&quot;
+[16] &quot;package:utils&quot;     &quot;package:datasets&quot;  &quot;package:methods&quot;  
+[19] &quot;Autoloads&quot;         &quot;package:base&quot;     
+</code></pre>
+
+<p>Since <code>search()</code> returns a character vector, we could use the
+following to verify <code>mtcars</code> is in the search path:</p>
+
+<pre><code class="r">&quot;mtcars&quot; %in% search()
+</code></pre>
+
+<pre><code>[1] TRUE
+</code></pre>
+
+<p>And thus, instead of using either of these:</p>
+
+<pre><code class="r">head(mtcars$mpg)
+</code></pre>
+
+<pre><code>[1] 21.0 21.0 22.8 21.4 18.7 18.1
+</code></pre>
+
+<pre><code class="r">head(mtcars[, &quot;mpg&quot;])
+</code></pre>
+
+<pre><code>[1] 21.0 21.0 22.8 21.4 18.7 18.1
+</code></pre>
+
+<p>We can simply use <code>mpg</code>:</p>
+
+<pre><code class="r">head(mpg)
+</code></pre>
+
+<pre><code>[1] 21.0 21.0 22.8 21.4 18.7 18.1
+</code></pre>
+
+<p>In preparation for the lattice plots, we create factors with
+value labels that will aid in annotation and in dividing the
+data into groups based on the number of gears and the
+number of cylinders.</p>
+
+<pre><code class="r">gear.f &lt;- factor(gear, levels = c(3, 4, 5), labels = c(&quot;3gears&quot;, &quot;4gears&quot;, &quot;5gears&quot;))
+cyl.f &lt;- factor(cyl, levels = c(4, 6, 8), labels = c(&quot;4cyl&quot;, &quot;6cyl&quot;, &quot;8cyl&quot;))
+</code></pre>
+
+<p>Let&#39;s make a kernel density plot of mpg for all the vehicles.
+A kernel density is a smoothed plot of the raw
+data. Notice that <code>densityplot()</code> comes from the <code>lattice</code>
+package.</p>
+
+<pre><code class="r">densityplot(~mpg, main = &quot;Density Plot&quot;, xlab = &quot;Miles per Gallon&quot;)
+</code></pre>
+
+<p><img src="figures/knitr/unnamed-chunk-19-1.png" alt="plot of chunk unnamed-chunk-19"> </p>
+
+<p>Kernel density plots for each cylinder type.  Notice
+this is where we use the factor variable for cylinder.</p>
+
+<pre><code class="r">densityplot(~mpg | cyl.f, main = &quot;Density Plot by Number of Cylinders&quot;, xlab = &quot;Miles per Gallon&quot;)
+</code></pre>
+
+<p><img src="figures/knitr/unnamed-chunk-20-1.png" alt="plot of chunk unnamed-chunk-20"> </p>
+
+<p>Scatterplots of mpg vs. weight for each combination of
+cylinder type and gear type.  <code>xyplot()</code> is another function
+from the <code>lattice</code> package.</p>
+
+<pre><code class="r">xyplot(mpg ~ wt | cyl.f * gear.f, main = &quot;Scatterplots by Cylinders and Gears&quot;, 
+    ylab = &quot;Miles per Gallon&quot;, xlab = &quot;Car Weight&quot;)
+</code></pre>
+
+<p><img src="figures/knitr/unnamed-chunk-21-1.png" alt="plot of chunk unnamed-chunk-21"> </p>
+
+<p>Scatterplot matrix over a number of the columns:</p>
+
+<pre><code class="r">splom(mtcars[, c(1, 3:6)], main = &quot;MTCARS Data&quot;)
+</code></pre>
+
+<p><img src="figures/knitr/unnamed-chunk-22-1.png" alt="plot of chunk unnamed-chunk-22"> </p>
+
+<p>Now that we&#39;re through with mtcars, we detach it from the
+search path.</p>
+
+<pre><code class="r">detach(mtcars)
+</code></pre>
+
+<p>It&#39;s no longer there.</p>
+
+<pre><code class="r">&quot;mtcars&quot; %in% search()
+</code></pre>
+
+<pre><code>[1] FALSE
+</code></pre>
+
+<p>Close the graphics window(s).</p>
+
+<pre><code class="r">graphics.off()
+</code></pre>
+
+<h4>Exercise 4.2: Trellis plots</h4>
+
+<p>1) Attach the quakes data that comes with R. Look at the
+   columns using <code>head()</code> or <code>str()</code>.</p>
+
+<p>2) Use <code>xyplot</code> to plot lat vs. long for the location of the
+   earthquakes. Label the axes and the main graphs
+   using the following command to bin the depth variable into
+   9 bins:</p>
+
+<p><code>depthbin &lt;- equal.count(quakes$depth, number = 9,
+                            overlap = 0)</code></p>
+
+<p>Make sure you have loaded the lattice package via:
+   <code>library(lattice)</code>.</p>
+
+<p>3) Now use xyplot() to plot lat,long for each depthbin of
+   the earthquake to create a set of graphs in a trellis
+   display.</p>
+
+</div>
+
+
+<div class='tab-pane' id='activity-2-exercise-solutions'>
+<h3>Activity 2: Exercise Solutions</h3>
+
+<p>Solutions for Exercises in Activity 3</p>
+
+<h4>Exercise 2.1: Numeric Vectors</h4>
+
+<p>1) Create a vector from 3 to 11, in steps of 2.</p>
+
+<p>2) Create another vector from 12 to 4 in steps of -2.</p>
+
+<p>3) Display the last 2 elements of the second vector.</p>
+
+<p>4) Calculate the mean of the element-wise product of these
+two vectors.</p>
+
+<h4>Solutions</h4>
+
+<p>First vector:</p>
+
+<pre><code class="r">x &lt;- seq(3, 11, by = 2)
+</code></pre>
+
+<p>Second vector:</p>
+
+<pre><code class="r">y &lt;- seq(12, 4, by = -2)
+y
+</code></pre>
+
+<pre><code>[1] 12 10  8  6  4
+</code></pre>
+
+<p>Determine the length of the vector.</p>
+
+<pre><code class="r">n &lt;- length(y)
+</code></pre>
+
+<p>Select the last two elements.</p>
+
+<pre><code class="r">y[c(n - 1, n)]
+</code></pre>
+
+<pre><code>[1] 6 4
+</code></pre>
+
+<p>Calculate the mean of the element-wise product of x and y.</p>
+
+<pre><code class="r">mean(x * y)
+</code></pre>
+
+<pre><code>[1] 48
+</code></pre>
+
+<h4>Exercise 2.2: Character vectors</h4>
+
+<p>1) Create a character vector consisting of nouns (of the
+length of your choosing).</p>
+
+<p>2) Create a second character vector of same length with verbs.</p>
+
+<p>3) Paste the two vectors together.</p>
+
+<p>4) Count the total number of characters in the entire noun
+vector.  Hint, use the &#39;sum&#39; function.</p>
+
+<h4>Solutions</h4>
+
+<p>Create the noun vector.</p>
+
+<pre><code class="r">nouns &lt;- c(&quot;cats&quot;, &quot;dogs&quot;, &quot;elephants&quot;)
+</code></pre>
+
+<p>Create the verb vector.</p>
+
+<pre><code class="r">verbs &lt;- c(&quot;bark&quot;, &quot;climb&quot;, &quot;jump&quot;)
+</code></pre>
+
+<p>Join them together.</p>
+
+<pre><code class="r">paste(nouns, verbs)
+</code></pre>
+
+<pre><code>[1] &quot;cats bark&quot;      &quot;dogs climb&quot;     &quot;elephants jump&quot;
+</code></pre>
+
+<p>Count the number of characters.</p>
+
+<pre><code class="r">sum(nchar(nouns))
+</code></pre>
+
+<pre><code>[1] 17
+</code></pre>
+
+<h4>Exercise 2.3: Logical vectors</h4>
+
+<p>1) Create random numeric vector of length 1000 with values
+uniformly chosen between 0 and 1.  Hint: use the &#39;runif&#39;
+function.</p>
+
+<p>2) Count the number of elements in the vector that
+fall in the interval [0.2, 0.8].  On average, it should
+be 600.</p>
+
+<h4>Solutions</h4>
+
+<p>Generate 1000 random uniform draws in the interval [0, 1].</p>
+
+<pre><code class="r">x &lt;- runif(1000)
+</code></pre>
+
+<p>Create the indicator for &gt;= 0.2.</p>
+
+<pre><code class="r">above_2 &lt;- x &gt;= 0.2
+</code></pre>
+
+<p>Create the indicator for &lt;= 0.8.</p>
+
+<pre><code class="r">below_8 &lt;- x &lt;= 0.8
+</code></pre>
+
+<p>Count the number of &#39;TRUE&#39;s that satisfy both conditions.</p>
+
+<pre><code class="r">sum(above_2 &amp; below_8)
+</code></pre>
+
+<pre><code>[1] 605
+</code></pre>
+
+<h4>Exercise 2.5: Named vectors</h4>
+
+<p>1) Create a named character vector of length 3.</p>
+
+<p>2) Create a second named logical vector of length 3.</p>
+
+<p>3) Switch the names of the 2 vectors.</p>
+
+<h4>Solutions</h4>
+
+<p>A named character vector:</p>
+
+<pre><code class="r">xChar &lt;- c(this = &quot;one&quot;, that = &quot;too&quot;, these = &quot;many&quot;)
+xChar
+</code></pre>
+
+<pre><code>  this   that  these 
+ &quot;one&quot;  &quot;too&quot; &quot;many&quot; 
+</code></pre>
+
+<p>A named logical vector:</p>
+
+<pre><code class="r">xLogical &lt;- c(happy = TRUE, sad = FALSE, angry = TRUE)
+xLogical
+</code></pre>
+
+<pre><code>happy   sad angry 
+ TRUE FALSE  TRUE 
+</code></pre>
+
+<p>Switch the names.  Begin by storing the names of &#39;xChar&#39; in a character vector.</p>
+
+<pre><code class="r">xCharNames &lt;- names(xChar)
+</code></pre>
+
+<p>Assign the names of &#39;xLogical&#39; to &#39;xChar&#39;.</p>
+
+<pre><code class="r">names(xChar) &lt;- names(xLogical)
+</code></pre>
+
+<p>Assign the names of &#39;xChar&#39; to &#39;xLogical&#39;.</p>
+
+<pre><code class="r">names(xLogical) &lt;- xCharNames
+</code></pre>
+
+<p>Look at the results:</p>
+
+<pre><code class="r">xChar
+</code></pre>
+
+<pre><code> happy    sad  angry 
+ &quot;one&quot;  &quot;too&quot; &quot;many&quot; 
+</code></pre>
+
+<pre><code class="r">xLogical
+</code></pre>
+
+<pre><code> this  that these 
+ TRUE FALSE  TRUE 
+</code></pre>
+
+<h4>Exercise 2.6: Data frames</h4>
+
+<p>1) Create a data frame with at least 7 rows with the
+following columns:
+    1. A character vector consisting of some repetition of
+       the letters &#39;a&#39;, &#39;b&#39; and &#39;c&#39;
+    2. A numeric vector of randomly generated numbers between
+       0 and 1.  Hint:  use &#39;runif()&#39;
+    3. A second numeric vector of randomly generated numbers
+       between 2 and 7.  Hint: use &#39;runif()&#39; again</p>
+
+<p>2) Display the number of rows of the data frame.</p>
+
+<p>3) Assign rownames consisting of capital letters, &#39;A&#39;, &#39;B&#39;,
+    &#39;C&#39;, etc.  Hint, use the &#39;LETTERS&#39; object that is part of
+    R.</p>
+
+<p>4) Display the second column of the fourth and fifth rows
+    using the row and column names of the data frame.</p>
+
+<p>5) Create a subset of the data by selecting those observations
+    meet all of the following criteria:
+      a.  The character vector has a value of &#39;b&#39; or &#39;c&#39;.
+      b.  The value of the first numeric vector is greater than
+          0.1.
+      c.  The value of the second numeric vector is less than
+          6.</p>
+
+<h4>Solutions</h4>
+
+<p>Create the data frame.  I&#39;m using vectors of length 9.</p>
+
+<pre><code class="r">X &lt;- data.frame(char = rep(letters[1:3], 3),
+                num1 = runif(9),
+                num2 = runif(9, min = 2, max = 7))
+</code></pre>
+
+<p>Get the number of rows of the data frame.</p>
+
+<pre><code class="r">n &lt;- nrow(X)
+n
+</code></pre>
+
+<pre><code>[1] 9
+</code></pre>
+
+<p>Assign rownames.</p>
+
+<pre><code class="r">rownames(X) &lt;- LETTERS[1:n]
+</code></pre>
+
+<p>Display the data frame.</p>
+
+<pre><code class="r">X
+</code></pre>
+
+<pre><code>  char       num1     num2
+A    a 0.67475183 3.261133
+B    b 0.58242251 3.322568
+C    c 0.04375276 5.145378
+D    a 0.43217585 2.067905
+E    b 0.85067277 5.574737
+F    c 0.91536045 2.357489
+G    a 0.11589136 6.988070
+H    b 0.05788869 5.793786
+I    c 0.39904476 5.567641
+</code></pre>
+
+<p>Display 2nd column, 4th and 5th rows using names.</p>
+
+<pre><code class="r">X[c(&quot;D&quot;, &quot;E&quot;), &quot;num1&quot;]
+</code></pre>
+
+<pre><code>[1] 0.4321758 0.8506728
+</code></pre>
+
+<p>Create a subset of the data to satisfy the criteria.</p>
+
+<pre><code class="r">criteria1 &lt;- X$char %in% c(&quot;b&quot;, &quot;c&quot;)
+criteria2 &lt;- X$num1 &gt; 0.1
+criteria3 &lt;- X$num2 &lt; 6
+allCrit &lt;- criteria1 &amp; criteria2 &amp; criteria3
+</code></pre>
+
+<p>How many rows satisfy the criteria?</p>
+
+<pre><code class="r">sum(allCrit)
+</code></pre>
+
+<pre><code>[1] 4
+</code></pre>
+
+<p>Display the subset.</p>
+
+<pre><code class="r">X[allCrit,]
+</code></pre>
+
+<pre><code>  char      num1     num2
+B    b 0.5824225 3.322568
+E    b 0.8506728 5.574737
+F    c 0.9153605 2.357489
+I    c 0.3990448 5.567641
+</code></pre>
+
+<p>What happens if all values of &#39;allCrit&#39; are false? We get back a data frame with no rows.</p>
+
+<pre><code class="r">allCrit &lt;- rep(FALSE, n)
+X[allCrit,]
+</code></pre>
+
+<pre><code>[1] char num1 num2
+&lt;0 rows&gt; (or 0-length row.names)
+</code></pre>
+
+<h4>Exercise 2.7: Matrices</h4>
+
+<p>1) Create a 2 x 2 matrix with the following elements:
+    (2, 4, 7, 1), loaded rowwise.</p>
+
+<p>2) Calculate the trace (the sum of the diagonal elements)
+    of the matrix.  Hint: use the &#39;sum()&#39; function.</p>
+
+<p>3) Create a column vector of length 2 with the elements
+    (3, 5).</p>
+
+<p>4) Using matrix multiplication, and your results from (1)
+    and (3), find the product of the transpose of the column
+    vector, the matrix, and the column vector.  Display the
+    result should as a single number (not a 1 x 1 matrix).</p>
+
+<h4>Solutions</h4>
+
+<p>Create the matrix.</p>
+
+<pre><code class="r">m &lt;- matrix(c(2, 4, 7, 1), nrow = 2, byrow = TRUE)
+m
+</code></pre>
+
+<pre><code>     [,1] [,2]
+[1,]    2    4
+[2,]    7    1
+</code></pre>
+
+<p>Calculate the trace.</p>
+
+<pre><code class="r">sum(diag(m))
+</code></pre>
+
+<pre><code>[1] 3
+</code></pre>
+
+<p>Create the column vector.</p>
+
+<pre><code class="r">v &lt;- c(3, 5)
+v
+</code></pre>
+
+<pre><code>[1] 3 5
+</code></pre>
+
+<p>Calcuate the product, display as a vector.</p>
+
+<pre><code class="r">as.vector(t(v) %*% m %*% v)
+</code></pre>
+
+<pre><code>[1] 208
+</code></pre>
+
+<h4>Exercise 2.8:  Lists</h4>
+
+<p>1) Create a named list with 3 elements:  a character vector,
+    a numeric vector, and a 2 x 2 matrix.</p>
+
+<p>2) Extract the third and first elements of the list,
+    in that order.</p>
+
+<p>3) Extract the 2nd element without the elment name.</p>
+
+<p>4) Calculate the length of each element of the list and
+    return the result as a vector.</p>
+
+<h4>Solutions</h4>
+
+<p>Create a list with three named elements.</p>
+
+<pre><code class="r">myList &lt;- list(charVec = c(&quot;this&quot;, &quot;that&quot;),
+               numVec = rnorm(7),
+               mat = matrix(1:4, nrow = 2))
+myList
+</code></pre>
+
+<pre><code>$charVec
+[1] &quot;this&quot; &quot;that&quot;
+
+$numVec
+[1]  1.7268424  0.1670909 -1.0438430 -0.8198422  0.2675400  2.4841219
+[7] -1.3742132
+
+$mat
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+</code></pre>
+
+<p>Extract the third and first elements.  Two ways to do this:</p>
+
+<pre><code class="r">myList[c(&quot;mat&quot;, &quot;charVec&quot;)]
+</code></pre>
+
+<pre><code>$mat
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+
+$charVec
+[1] &quot;this&quot; &quot;that&quot;
+</code></pre>
+
+<pre><code class="r">myList[c(3, 1)]
+</code></pre>
+
+<pre><code>$mat
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+
+$charVec
+[1] &quot;this&quot; &quot;that&quot;
+</code></pre>
+
+<p>Extract the 2nd element.  Two ways to do this:</p>
+
+<pre><code class="r">myList[[&quot;numVec&quot;]]
+</code></pre>
+
+<pre><code>[1]  1.7268424  0.1670909 -1.0438430 -0.8198422  0.2675400  2.4841219
+[7] -1.3742132
+</code></pre>
+
+<pre><code class="r">myList$numVec
+</code></pre>
+
+<pre><code>[1]  1.7268424  0.1670909 -1.0438430 -0.8198422  0.2675400  2.4841219
+[7] -1.3742132
+</code></pre>
+
+<p>Calculate the length of each element, returned as a vector.</p>
+
+<pre><code class="r">unlist(lapply(myList, length))
+</code></pre>
+
+<pre><code>charVec  numVec     mat 
+      2       7       4 
+</code></pre>
+
+</div>
+
+
+<div class='tab-pane' id='activity-3-exercise-solutions'>
+<h3>Activity 3: Exercise Solutions</h3>
+
+<p>Solutions for Exercises in Activity 4</p>
+
+<h4>Exercise 3.2: Read and write data to/from disc</h4>
+
+<p>1) Save the file <a href="#data">some_fake_data.csv</a> to you computer (and upload 
+   it if necessary to the R studio server). Verify that the file <strong>some_fake_data.csv</strong> is in your
+   working directory using <code>dir()</code>.</p>
+
+<p>2) Read the file <strong>some_fake_data.csv</strong> to a data frame.</p>
+
+<p>2) Create a subset of the data by selecting the
+   first and last columns whenever the second column is
+   less than 7.  Try to use the column names when
+   accessing the data frame, as it&#39;s generally a better
+   programming practice.</p>
+
+<p>3) Write the resulting data frame to a new csv file, called
+   <strong>more_fake_data.csv</strong>.  Use the <code>write.csv()</code> function.</p>
+
+<h4>Solution</h4>
+
+<p>Check for the presence of the data.</p>
+
+<pre><code class="r">dir(pattern = &quot;some_fake&quot;)
+</code></pre>
+
+<pre><code>[1] &quot;some_fake_data.csv&quot;
+</code></pre>
+
+<p>Read data.</p>
+
+<pre><code class="r">d &lt;- read.csv(&quot;some_fake_data.csv&quot;)
+</code></pre>
+
+<p>Look at the structure, notice the column names.</p>
+
+<pre><code class="r">str(d)
+</code></pre>
+
+<pre><code>&#39;data.frame&#39;:   10 obs. of  3 variables:
+ $ alpha: Factor w/ 10 levels &quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,..: 1 2 3 4 5 6 7 8 9 10
+ $ beta : int  1 2 3 4 5 6 7 8 9 10
+ $ gamma: num  -0.637 -0.459 0.897 -0.358 -0.577 ...
+</code></pre>
+
+<p>Create an indicator for when the 2nd column is less than 7.</p>
+
+<pre><code class="r">selIndicator &lt;- d[,&quot;beta&quot;] &lt; 7
+</code></pre>
+
+<p>Create the requested subset.</p>
+
+<pre><code class="r">dSubset &lt;- d[selIndicator, c(&quot;alpha&quot;, &quot;gamma&quot;)]
+</code></pre>
+
+<p>Write the output.</p>
+
+<pre><code class="r">write.csv(dSubset, file = &quot;more_fake_data.csv&quot;,
+          row.names = FALSE)
+</code></pre>
+
+<h4>Exercise 3.4: Making your own functions</h4>
+
+<p>1) Create a function that takes two numerical, unnamed
+   arguments, (say, <code>x</code> and <code>y</code>) and a single named argument
+   that will determine whether your function multiplies
+   (the default) or divides your two numeric arguments,
+   <code>x</code> and <code>y</code>.</p>
+
+<p>2) Call the function using scalar inputs for <code>x</code> and <code>y</code>
+   such that <code>x</code> is multiplied by <code>y</code>.</p>
+
+<p>3) Call the function using vector inputs for <code>x</code> and <code>y</code>
+   such that <code>x</code> is divided by <code>y</code>.</p>
+
+<h4>Solution</h4>
+
+<p>Define the function.</p>
+
+<pre><code class="r">f &lt;- function(x, y, type = &quot;multiply&quot;) {
+
+  if (type == &quot;multiply&quot;) {
+    out &lt;- x * y
+  }
+  else if (type == &quot;divide&quot;) {
+    out &lt;- x / y
+  }
+  else {
+    stop(&quot;&#39;type&#39; must be either &#39;multiply&#39; or &#39;divide&#39;&quot;)
+  }
+
+  return(out)
+
+}
+</code></pre>
+
+<p>Call it to multiply scalar values of x and y.</p>
+
+<pre><code class="r">f(3, 5)
+</code></pre>
+
+<pre><code>[1] 15
+</code></pre>
+
+<p>Call it to divide two vectors.</p>
+
+<pre><code class="r">f(1:3, 7:9, type = &quot;divide&quot;)
+</code></pre>
+
+<pre><code>[1] 0.1428571 0.2500000 0.3333333
+</code></pre>
+
+</div>
+
+
+<div class='tab-pane' id='activity-4-exercise-solutions'>
+<h3>Activity 4: Exercise Solutions</h3>
+
+<p>Solutions for Exercises in Activity 5</p>
+
+<h4>Exercise 4.1: A simple linear regression model</h4>
+
+<p>1) Look at the Old Faithful geyser data in Yellowstone
+National Park.  It&#39;s the <code>faithful</code> dataset available in
+the base R distribution.  Use <code>help(faithful)</code> or <code>?faithful</code>
+to see its documentation,</p>
+
+<p>2) Plot the waiting time to the next eruptions vs. the
+duration of the eruption,</p>
+
+<p>3) Fit a simple linear regression model to predict waiting
+time from the eruption duration,</p>
+
+<p>4) Overlay the fitted model on the plot with a red line,</p>
+
+<h4>Solution</h4>
+
+<p>Look at the documentation.</p>
+
+<pre><code class="r">?faithful
+</code></pre>
+
+<p>Plot the data.</p>
+
+<pre><code class="r">with(faithful, plot(eruptions, waiting))
+</code></pre>
+
+<p><img src="figures/knitr/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+<p>Fit the simple linear regression model and overlay a regression line, make it thick with the <code>lwd</code>.
+(line width) argument.</p>
+
+<pre><code class="r">slrModel &lt;- lm(waiting ~ eruptions, data = faithful)
+</code></pre>
+
+<pre><code class="r">plot(slrModel, col = &quot;Red&quot;, lwd = 5)
+</code></pre>
+
+<p><img src="figures/knitr/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> <img src="figures/knitr/unnamed-chunk-4-2.png" alt="plot of chunk unnamed-chunk-4"> <img src="figures/knitr/unnamed-chunk-4-3.png" alt="plot of chunk unnamed-chunk-4"> <img src="figures/knitr/unnamed-chunk-4-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+<p>Shut down the graph.</p>
+
+<pre><code class="r">dev.off()
+</code></pre>
+
+<pre><code>null device 
+          1 
+</code></pre>
+
+<h4>Exercise 4.2: Trellis plots</h4>
+
+<p>1) Attach the quakes data that comes with R. Look at the
+columns using <code>head()</code> or <code>str()</code>.</p>
+
+<p>2) Use <code>xyplot</code> to plot lat vs. long for the location of the
+earthquakes. Label the axes and the main graphs
+using the following command to bin the depth variable into
+9 bins:</p>
+
+<pre><code class="r">depthbin &lt;- equal.count(quakes$depth, number = 9, overlap = 0)
+</code></pre>
+
+<p>Make sure you have loaded the lattice package via:
+<code>library(lattice)</code>.</p>
+
+<p>3) Now use <code>xyplot()</code> to plot lat,long for each depthbin of
+the earthquake to create a set of graphs in a trellis
+display.</p>
+
+<h4>Solution</h4>
+
+<p>Attach quakes for convenience in accessing its columns:</p>
+
+<pre><code class="r">attach(quakes)
+</code></pre>
+
+<p>Check out the data:</p>
+
+<pre><code class="r">head(quakes)
+</code></pre>
+
+<pre><code>     lat   long depth mag stations
+1 -20.42 181.62   562 4.8       41
+2 -20.62 181.03   650 4.2       15
+3 -26.00 184.10    42 5.4       43
+4 -17.97 181.66   626 4.1       19
+5 -20.42 181.96   649 4.0       11
+6 -19.68 184.31   195 4.0       12
+</code></pre>
+
+<pre><code class="r">str(quakes)
+</code></pre>
+
+<pre><code>&#39;data.frame&#39;:   1000 obs. of  5 variables:
+ $ lat     : num  -20.4 -20.6 -26 -18 -20.4 ...
+ $ long    : num  182 181 184 182 182 ...
+ $ depth   : int  562 650 42 626 649 195 82 194 211 622 ...
+ $ mag     : num  4.8 4.2 5.4 4.1 4 4 4.8 4.4 4.7 4.3 ...
+ $ stations: int  41 15 43 19 11 12 43 15 35 19 ...
+</code></pre>
+
+<p>Create the depth binning variable:</p>
+
+<pre><code class="r">library(lattice)
+depth_bin &lt;- equal.count(quakes$depth, number = 9, overlap = 0)
+</code></pre>
+
+<p>Produce the plot:</p>
+
+<pre><code class="r">xyplot(lat ~long | depth_bin,
+main = &quot;Earthquakes in the Pacific&quot;,
+xlab = &quot;longitude&quot;, ylab = &quot;latitude&quot;)
+</code></pre>
+
+<p><img src="figures/knitr/unnamed-chunk-9-1.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+<p>Detach the quakes data frame:</p>
+
+<pre><code class="r">detach(quakes)
+</code></pre>
+
+</div>
+
+
+<div class='tab-pane' id='r-code'>
+<h3>R Code</h3>
+
+<p>If you would like to run through all of the code examples in this documentation without having to 
+pick out each line of code from the text, below are files with the R code for each section.  You can save
+these files to your computer and open then in RStudio (or other text editor). 
+If you&#39;re using RStudio server, upload these files from your computer to the server for
+easy access.</p>
+
+<ul>
+<li><a href="scripts/Activity_1.R">Activity 1</a></li>
+<li><a href="scripts/Activity_2.R">Activity 2</a></li>
+<li><a href="scripts/Activity_3.R">Activity 3</a></li>
+<li><a href="scripts/Activity_4.R">Activity 4</a></li>
+<li><a href="scripts/Activity_solutions_2.R">Activity 2 Solutions</a></li>
+<li><a href="scripts/Activity_solutions_3.R">Activity 3 Solutions</a></li>
+<li><a href="scripts/Activity_solutions_4.R">Activity 4 Solutions</a></li>
+</ul>
+
+</div>
+
+
+<div class='tab-pane' id='data'>
+<h3>Data</h3>
+
+<p>The following data files are used in the activities: </p>
+
+<ul>
+<li><a href="docs/some_fake_data.csv">some_fake_data.csv</a></li>
+<li><a href="docs/nf-week2-sample.csv">nf-week2-sample.csv</a></li>
+</ul>
+
+<p>To save these files to your computer, right click on the link and choose <code>Save Link As...</code> (or something to that effect)</p>
+
+<p>If you are using a server version of RStudio (running in a web browser), you&#39;ll need to upload the saved file
+from your computer to the the RStudio server using the <code>Upload</code> button in the menu of the lower right
+quadrant of RStudio.</p>
+
+</div>
+
+   
+   <ul class="pager">
+      <li><a href="#" id="previous">&larr; Previous</a></li> 
+      <li><a href="#" id="next">Next &rarr;</a></li> 
+   </ul>
+</div>
+
+
+</div>
+</div>
+
+<hr>
+
+<div class="footer">
+   <p>&copy; Battelle Memorial Institute, 2015</p>
+</div>
+</div> <!-- /container -->
+
+<script src="assets/jquery/jquery.js"></script>
+<script type='text/javascript' src='assets/custom/custom.js'></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/custom/jquery.ba-hashchange.min.js"></script>
+<script src="assets/custom/nav.js"></script>
+
+</body>
+</html>
