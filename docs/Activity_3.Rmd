@@ -1,4 +1,4 @@
-### Activity 3: Reading/writing to disc, packages, functions ###
+### Activity 3: Reading/writing to disc, installing packages, writing functions ###
 
 
 #### Activity 3.1: Working directory and sourcing files

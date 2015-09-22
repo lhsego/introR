@@ -65,18 +65,6 @@ abline(slrModel, col = "Blue")
 abline(slrModel, col = "Blue")
 ```
 
-We can also add a smoothed line that follow the data
-using `lowess()`.
-(Again, remake the plot of these data first before executing the
-`lowess()` command if you closed the plot.)
-```{r eval = TRUE, echo = FALSE}
-plot(cars[, "speed"], cars[, "dist"], xlab = "Speed", ylab = "Distance")
-lines(lowess(cars$speed, cars$dist), col = "Red")
-```
-```{r eval=FALSE}
-lines(lowess(cars$speed, cars$dist), col = "Red")
-```
-
 You can close the current plot using:
 
 ```{r eval=TRUE}

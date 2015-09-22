@@ -42,10 +42,6 @@ coef(slrModel)
 # plot(cars[, "speed"], cars[, "dist"], xlab = "Speed", ylab = "Distance")
 abline(slrModel, col = "Blue")
 
-# We can also add a smoothed line that follow the data
-# using lowess()
-lines(lowess(cars$speed, cars$dist), col = "Red")
-
 # You can close the current plot using
 dev.off()
 
