@@ -388,7 +388,7 @@ print(mtSub.xtable, type = "html")
 
 ```
 <!-- html table generated in R 3.2.2 by xtable 1.7-4 package -->
-<!-- Tue Sep 22 04:44:47 2015 -->
+<!-- Tue Sep 22 04:55:42 2015 -->
 <table border=1>
 <tr> <th>  </th> <th> hp </th> <th> mpg </th>  </tr>
   <tr> <td align="right"> Hornet Sportabout </td> <td align="right"> 175.00 </td> <td align="right"> 18.70 </td> </tr>
@@ -409,7 +409,7 @@ print(mtSub.xtable)
 
 ```
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Tue Sep 22 04:44:47 2015
+% Tue Sep 22 04:55:42 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -454,7 +454,7 @@ simple
 function(x, y) {
   return(x + y - 7)
 }
-<environment: 0x7fe1f4c59ad8>
+<environment: 0x7fe1f5d66638>
 ```
 
 To call the function, add in parameter values for x and y.
@@ -826,7 +826,7 @@ simp6()
 ```
 
 ```
-[1] "A random Poisson variate: 22"
+[1] "A random Poisson variate: 19"
 ```
 
 ```r
@@ -834,7 +834,7 @@ simp6()
 ```
 
 ```
-[1] "A random Poisson variate: 21"
+[1] "A random Poisson variate: 26"
 ```
 
 

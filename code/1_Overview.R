@@ -20,5 +20,5 @@ upload the code and data to the RStudio server using the `Upload` button the men
 - Install R: http://www.r-project.org
 - Install RStudio (desktop version): http://www.rstudio.com
 - Open RStudio (or R) and execute the commands of the examples
-- You may want to save the [R code](#r-code) and [data](#data) to your local computer. This way you can
+- You may want to save the [R code](#r-code) and [data](#data) to your local computer and open the files in RStudio. This way you can
  run the code without having to copy and paste every line.

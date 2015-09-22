@@ -156,7 +156,7 @@ str(x)
 ```
 
 ```
- num [1:500] -0.769 2.76 1.985 4.662 2.486 ...
+ num [1:500] 2.19 5.301 3.785 -0.231 4.361 ...
 ```
 
 The `length()` function returns the number of elements in `x`.
@@ -177,7 +177,7 @@ sum(x)
 ```
 
 ```
-[1] 1437.02
+[1] 1500.357
 ```
 
 ```r
@@ -185,7 +185,7 @@ mean(x)
 ```
 
 ```
-[1] 2.87404
+[1] 3.000714
 ```
 
 ```r
@@ -193,7 +193,7 @@ max(x)
 ```
 
 ```
-[1] 8.806645
+[1] 8.723626
 ```
 
 ```r
@@ -201,7 +201,7 @@ min(x)
 ```
 
 ```
-[1] -2.347632
+[1] -2.695706
 ```
 
 ```r
@@ -209,7 +209,7 @@ sd(x)
 ```
 
 ```
-[1] 1.974588
+[1] 1.895011
 ```
 
 The `summary()` function provides summary statistics.
@@ -220,7 +220,7 @@ summary(x)
 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- -2.348   1.588   2.919   2.874   4.204   8.807 
+ -2.696   1.629   3.027   3.001   4.378   8.724 
 ```
 
 The `head()` and `tail()` functions shows the first or last 6 elements, respectively.
@@ -230,7 +230,7 @@ head(x)
 ```
 
 ```
-[1] -0.7688118  2.7598279  1.9846110  4.6619524  2.4859611  5.3715217
+[1]  2.1903659  5.3006754  3.7846527 -0.2314857  4.3606447  3.0430256
 ```
 
 ```r
@@ -238,7 +238,7 @@ tail(x)
 ```
 
 ```
-[1] 2.9538162 3.6379482 3.0638008 0.6297203 1.0774638 3.8071936
+[1] 0.6150675 3.5996400 6.6161307 0.8401297 4.3694436 5.0285421
 ```
 
 We can easily extract elements of vectors.  For example,
@@ -1449,10 +1449,10 @@ m2
 ```
 
 ```
-      [,1] [,2]  [,3]
-[1,] FALSE TRUE FALSE
-[2,]  TRUE TRUE FALSE
-[3,] FALSE TRUE  TRUE
+      [,1]  [,2]  [,3]
+[1,]  TRUE FALSE  TRUE
+[2,] FALSE FALSE FALSE
+[3,] FALSE  TRUE FALSE
 ```
 
 ```r
@@ -1460,7 +1460,7 @@ str(m2)
 ```
 
 ```
- logi [1:3, 1:3] FALSE TRUE FALSE TRUE TRUE TRUE ...
+ logi [1:3, 1:3] TRUE FALSE FALSE FALSE FALSE TRUE ...
 ```
 
 And you can melt a matrix back into a vector using `as.vector()`:
@@ -1471,7 +1471,7 @@ x1
 ```
 
 ```
-[1] FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+[1]  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
 ```
 
 ```r
@@ -2223,7 +2223,7 @@ dList
 [1] TRUE TRUE
 
 [[3]]
-[1] -2.436352 -0.447153 -1.247505
+[1]  0.1122982 -1.8249637 -1.4458625
 
 [[4]]
      [,1] [,2]
@@ -2272,8 +2272,8 @@ var
 ```
 
 ```
-[1] "non-living" "plant"      "non-living" "animal"     "non-living"
-[6] "animal"     "animal"     "plant"      "non-living"
+[1] "animal"     "non-living" "animal"     "plant"      "non-living"
+[6] "non-living" "non-living" "plant"      "animal"    
 ```
 
 We could create a factor vector as follows:
@@ -2284,8 +2284,8 @@ f1
 ```
 
 ```
-[1] non-living plant      non-living animal     non-living animal    
-[7] animal     plant      non-living
+[1] animal     non-living animal     plant      non-living non-living
+[7] non-living plant      animal    
 Levels: animal non-living plant
 ```
 
@@ -2297,7 +2297,7 @@ str(f1)
 ```
 
 ```
- Factor w/ 3 levels "animal","non-living",..: 2 3 2 1 2 1 1 3 2
+ Factor w/ 3 levels "animal","non-living",..: 1 2 1 3 2 2 2 3 1
 ```
 
 Factors have a nice summary() method that counts the number
@@ -2332,7 +2332,7 @@ as.numeric(f1)
 ```
 
 ```
-[1] 2 3 2 1 2 1 1 3 2
+[1] 1 2 1 3 2 2 2 3 1
 ```
 
 And we can pair the codings side-by-side in a data frame
@@ -2344,15 +2344,15 @@ data.frame(original = var, numerical.coding = as.numeric(f1))
 
 ```
     original numerical.coding
-1 non-living                2
-2      plant                3
-3 non-living                2
-4     animal                1
+1     animal                1
+2 non-living                2
+3     animal                1
+4      plant                3
 5 non-living                2
-6     animal                1
-7     animal                1
+6 non-living                2
+7 non-living                2
 8      plant                3
-9 non-living                2
+9     animal                1
 ```
 
 Suppose we prefer a different mapping: plant = 1, animal = 2,
@@ -2370,15 +2370,15 @@ data.frame(original = var, numerical.coding = as.numeric(f2))
 
 ```
     original numerical.coding
-1 non-living                3
-2      plant                1
-3 non-living                3
-4     animal                2
+1     animal                2
+2 non-living                3
+3     animal                2
+4      plant                1
 5 non-living                3
-6     animal                2
-7     animal                2
+6 non-living                3
+7 non-living                3
 8      plant                1
-9 non-living                3
+9     animal                2
 ```
 
 We subset factors by referencing their level names, not their
@@ -2390,7 +2390,7 @@ f2 == "plant"
 ```
 
 ```
-[1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+[1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE
 ```
 
 Or, to get the index numbers:
@@ -2400,7 +2400,7 @@ which(f2 == "plant")
 ```
 
 ```
-[1] 2 8
+[1] 4 8
 ```
 
 If the original data that were used to create a factor are
@@ -2597,7 +2597,7 @@ coef(m1)
 
 ```
 (Intercept)         f32         f33         f34 
- -0.5344446  -0.1839773   1.0074428   0.8423526 
+  0.3492999  -0.5479213   0.1707674  -1.1189338 
 ```
 
 ```r
@@ -2616,7 +2616,7 @@ coef(lm(x ~ f4))
 
 ```
 (Intercept)       f4bad      f4ugly f4obnoxious 
- -0.5344446  -0.1839773   1.0074428   0.8423526 
+  0.3492999  -0.5479213   0.1707674  -1.1189338 
 ```
 
 ```r
