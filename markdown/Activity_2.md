@@ -156,7 +156,7 @@ str(x)
 ```
 
 ```
- num [1:500] 1.69 7.56 -0.73 2.28 3.89 ...
+ num [1:500] 4.066 0.323 4.457 2.351 1.22 ...
 ```
 
 The `length()` function returns the number of elements in `x`.
@@ -177,7 +177,7 @@ sum(x)
 ```
 
 ```
-[1] 1519.036
+[1] 1550.919
 ```
 
 ```r
@@ -185,7 +185,7 @@ mean(x)
 ```
 
 ```
-[1] 3.038071
+[1] 3.101839
 ```
 
 ```r
@@ -193,7 +193,7 @@ max(x)
 ```
 
 ```
-[1] 10.35372
+[1] 9.282706
 ```
 
 ```r
@@ -201,7 +201,7 @@ min(x)
 ```
 
 ```
-[1] -4.569994
+[1] -2.323566
 ```
 
 ```r
@@ -209,7 +209,7 @@ sd(x)
 ```
 
 ```
-[1] 2.07731
+[1] 1.984143
 ```
 
 The `summary()` function provides summary statistics.
@@ -220,7 +220,7 @@ summary(x)
 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- -4.570   1.711   3.079   3.038   4.335  10.350 
+ -2.324   1.751   3.096   3.102   4.511   9.283 
 ```
 
 The `head()` and `tail()` functions shows the first or last 6 elements, respectively.
@@ -230,7 +230,7 @@ head(x)
 ```
 
 ```
-[1]  1.6945771  7.5569144 -0.7301704  2.2783516  3.8932270  0.9679906
+[1] 4.0658885 0.3231175 4.4572866 2.3510877 1.2196960 4.1409517
 ```
 
 ```r
@@ -238,7 +238,7 @@ tail(x)
 ```
 
 ```
-[1] 2.408713 2.116193 7.321237 2.129248 4.382119 4.568843
+[1] 2.9917702 3.6270783 0.7242536 4.3765526 5.1170512 1.7675644
 ```
 
 We can easily extract elements of vectors.  For example,
@@ -1454,9 +1454,9 @@ m2
 
 ```
       [,1]  [,2]  [,3]
-[1,]  TRUE FALSE FALSE
-[2,] FALSE  TRUE FALSE
-[3,]  TRUE FALSE FALSE
+[1,] FALSE  TRUE  TRUE
+[2,]  TRUE FALSE FALSE
+[3,]  TRUE  TRUE FALSE
 ```
 
 ```r
@@ -1464,7 +1464,7 @@ str(m2)
 ```
 
 ```
- logi [1:3, 1:3] TRUE FALSE TRUE FALSE TRUE FALSE ...
+ logi [1:3, 1:3] FALSE TRUE TRUE TRUE FALSE TRUE ...
 ```
 
 And you can melt a matrix back into a vector using `as.vector()`:
@@ -1475,7 +1475,7 @@ x1
 ```
 
 ```
-[1]  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE
+[1] FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE
 ```
 
 ```r
@@ -2231,7 +2231,7 @@ dList
 [1] TRUE TRUE
 
 [[3]]
-[1]  0.4196336  0.6885846 -0.2392585
+[1] 0.03126338 2.39457511 1.52202588
 
 [[4]]
      [,1] [,2]
@@ -2281,7 +2281,7 @@ var
 
 ```
 [1] "non-living" "non-living" "animal"     "non-living" "plant"     
-[6] "animal"     "plant"      "animal"     "non-living"
+[6] "animal"     "animal"     "plant"      "non-living"
 ```
 
 We could create a factor vector as follows:
@@ -2293,7 +2293,7 @@ f1
 
 ```
 [1] non-living non-living animal     non-living plant      animal    
-[7] plant      animal     non-living
+[7] animal     plant      non-living
 Levels: animal non-living plant
 ```
 
@@ -2305,7 +2305,7 @@ str(f1)
 ```
 
 ```
- Factor w/ 3 levels "animal","non-living",..: 2 2 1 2 3 1 3 1 2
+ Factor w/ 3 levels "animal","non-living",..: 2 2 1 2 3 1 1 3 2
 ```
 
 Factors have a nice summary() method that counts the number
@@ -2340,7 +2340,7 @@ as.numeric(f1)
 ```
 
 ```
-[1] 2 2 1 2 3 1 3 1 2
+[1] 2 2 1 2 3 1 1 3 2
 ```
 
 And we can pair the codings side-by-side in a data frame
@@ -2358,8 +2358,8 @@ data.frame(original = var, numerical.coding = as.numeric(f1))
 4 non-living                2
 5      plant                3
 6     animal                1
-7      plant                3
-8     animal                1
+7     animal                1
+8      plant                3
 9 non-living                2
 ```
 
@@ -2384,8 +2384,8 @@ data.frame(original = var, numerical.coding = as.numeric(f2))
 4 non-living                3
 5      plant                1
 6     animal                2
-7      plant                1
-8     animal                2
+7     animal                2
+8      plant                1
 9 non-living                3
 ```
 
@@ -2398,7 +2398,7 @@ f2 == "plant"
 ```
 
 ```
-[1] FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE
+[1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
 ```
 
 Or, to get the index numbers:
@@ -2408,7 +2408,7 @@ which(f2 == "plant")
 ```
 
 ```
-[1] 5 7
+[1] 5 8
 ```
 
 If the original data that were used to create a factor are
@@ -2605,7 +2605,7 @@ coef(m1)
 
 ```
 (Intercept)         f32         f33         f34 
-  0.1945259  -0.3157898   0.3394097  -0.8695005 
+ -0.2811826   1.6901192  -0.4225555   0.2564350 
 ```
 
 ```r
@@ -2624,7 +2624,7 @@ coef(lm(x ~ f4))
 
 ```
 (Intercept)       f4bad      f4ugly f4obnoxious 
-  0.1945259  -0.3157898   0.3394097  -0.8695005 
+ -0.2811826   1.6901192  -0.4225555   0.2564350 
 ```
 
 ```r

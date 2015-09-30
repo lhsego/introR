@@ -133,14 +133,14 @@
 <p>This is a hands-on introduction to the <a href="http://www.R-project.org">R language</a>, with a number of examples and exercises designed to
 give you a basic feel for R.  </p>
 
-<p>By Landon Sego of Pacific Northwest National Laboratory and Veronica Bunn of the Florida State University.</p>
+<p>By Landon Sego of Pacific Northwest National Laboratory and Veronica Bunn of the Florida State University</p>
 
 <h4>If you are running these examples on RStudio server:</h4>
 
 <ul>
 <li>Connect to the RStudio server and execute the commands of the examples</li>
 <li>You may want to save the <a href="#r-code">R code</a> and <a href="#data">data</a> to your local computer, and then 
-upload the code and data to the RStudio server using the <code>Upload</code> button the menu of the lower right panel. This way you can run the code without having to copy and paste every line.</li>
+upload the code and data to the RStudio server using the <code>Upload</code> button the menu of the lower right panel. This way you can run the code without having to copy and paste every line</li>
 </ul>
 
 <h4>If you are running these examples on your local computer:</h4>
@@ -150,7 +150,7 @@ upload the code and data to the RStudio server using the <code>Upload</code> but
 <li>Install RStudio (desktop version): <a href="http://www.rstudio.com">http://www.rstudio.com</a></li>
 <li>Open RStudio (or R) and execute the commands of the examples</li>
 <li>You may want to save the <a href="#r-code">R code</a> and <a href="#data">data</a> to your local computer and open the files in RStudio. This way you can
-run the code without having to copy and paste every line.</li>
+run the code without having to copy and paste every line</li>
 </ul>
 
 </div>
@@ -531,7 +531,7 @@ of 2.</p>
 <pre><code class="r">str(x)
 </code></pre>
 
-<pre><code> num [1:500] 1.69 7.56 -0.73 2.28 3.89 ...
+<pre><code> num [1:500] 4.066 0.323 4.457 2.351 1.22 ...
 </code></pre>
 
 <p>The <code>length()</code> function returns the number of elements in <code>x</code>.</p>
@@ -548,31 +548,31 @@ deviation.</p>
 <pre><code class="r">sum(x)
 </code></pre>
 
-<pre><code>[1] 1519.036
+<pre><code>[1] 1550.919
 </code></pre>
 
 <pre><code class="r">mean(x)
 </code></pre>
 
-<pre><code>[1] 3.038071
+<pre><code>[1] 3.101839
 </code></pre>
 
 <pre><code class="r">max(x)
 </code></pre>
 
-<pre><code>[1] 10.35372
+<pre><code>[1] 9.282706
 </code></pre>
 
 <pre><code class="r">min(x)
 </code></pre>
 
-<pre><code>[1] -4.569994
+<pre><code>[1] -2.323566
 </code></pre>
 
 <pre><code class="r">sd(x)
 </code></pre>
 
-<pre><code>[1] 2.07731
+<pre><code>[1] 1.984143
 </code></pre>
 
 <p>The <code>summary()</code> function provides summary statistics.</p>
@@ -581,7 +581,7 @@ deviation.</p>
 </code></pre>
 
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- -4.570   1.711   3.079   3.038   4.335  10.350 
+ -2.324   1.751   3.096   3.102   4.511   9.283 
 </code></pre>
 
 <p>The <code>head()</code> and <code>tail()</code> functions shows the first or last 6 elements, respectively.</p>
@@ -589,13 +589,13 @@ deviation.</p>
 <pre><code class="r">head(x)
 </code></pre>
 
-<pre><code>[1]  1.6945771  7.5569144 -0.7301704  2.2783516  3.8932270  0.9679906
+<pre><code>[1] 4.0658885 0.3231175 4.4572866 2.3510877 1.2196960 4.1409517
 </code></pre>
 
 <pre><code class="r">tail(x)
 </code></pre>
 
-<pre><code>[1] 2.408713 2.116193 7.321237 2.129248 4.382119 4.568843
+<pre><code>[1] 2.9917702 3.6270783 0.7242536 4.3765526 5.1170512 1.7675644
 </code></pre>
 
 <p>We can easily extract elements of vectors.  For example,
@@ -1628,15 +1628,15 @@ m2
 </code></pre>
 
 <pre><code>      [,1]  [,2]  [,3]
-[1,]  TRUE FALSE FALSE
-[2,] FALSE  TRUE FALSE
-[3,]  TRUE FALSE FALSE
+[1,] FALSE  TRUE  TRUE
+[2,]  TRUE FALSE FALSE
+[3,]  TRUE  TRUE FALSE
 </code></pre>
 
 <pre><code class="r">str(m2)
 </code></pre>
 
-<pre><code> logi [1:3, 1:3] TRUE FALSE TRUE FALSE TRUE FALSE ...
+<pre><code> logi [1:3, 1:3] FALSE TRUE TRUE TRUE FALSE TRUE ...
 </code></pre>
 
 <p>And you can melt a matrix back into a vector using <code>as.vector()</code>:</p>
@@ -1645,7 +1645,7 @@ m2
 x1
 </code></pre>
 
-<pre><code>[1]  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE
+<pre><code>[1] FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE
 </code></pre>
 
 <pre><code class="r">identical(x, x1)
@@ -2292,7 +2292,7 @@ dList
 [1] TRUE TRUE
 
 [[3]]
-[1]  0.4196336  0.6885846 -0.2392585
+[1] 0.03126338 2.39457511 1.52202588
 
 [[4]]
      [,1] [,2]
@@ -2341,7 +2341,7 @@ var
 </code></pre>
 
 <pre><code>[1] &quot;non-living&quot; &quot;non-living&quot; &quot;animal&quot;     &quot;non-living&quot; &quot;plant&quot;     
-[6] &quot;animal&quot;     &quot;plant&quot;      &quot;animal&quot;     &quot;non-living&quot;
+[6] &quot;animal&quot;     &quot;animal&quot;     &quot;plant&quot;      &quot;non-living&quot;
 </code></pre>
 
 <p>We could create a factor vector as follows:</p>
@@ -2351,7 +2351,7 @@ f1
 </code></pre>
 
 <pre><code>[1] non-living non-living animal     non-living plant      animal    
-[7] plant      animal     non-living
+[7] animal     plant      non-living
 Levels: animal non-living plant
 </code></pre>
 
@@ -2361,7 +2361,7 @@ encodings of the categorical values.</p>
 <pre><code class="r">str(f1)
 </code></pre>
 
-<pre><code> Factor w/ 3 levels &quot;animal&quot;,&quot;non-living&quot;,..: 2 2 1 2 3 1 3 1 2
+<pre><code> Factor w/ 3 levels &quot;animal&quot;,&quot;non-living&quot;,..: 2 2 1 2 3 1 1 3 2
 </code></pre>
 
 <p>Factors have a nice summary() method that counts the number
@@ -2390,7 +2390,7 @@ can see the numerical encodings by using <code>as.numeric()</code>.</p>
 <pre><code class="r">as.numeric(f1)
 </code></pre>
 
-<pre><code>[1] 2 2 1 2 3 1 3 1 2
+<pre><code>[1] 2 2 1 2 3 1 1 3 2
 </code></pre>
 
 <p>And we can pair the codings side-by-side in a data frame
@@ -2406,8 +2406,8 @@ with the original character vector to see the mapping.</p>
 4 non-living                2
 5      plant                3
 6     animal                1
-7      plant                3
-8     animal                1
+7     animal                1
+8      plant                3
 9 non-living                2
 </code></pre>
 
@@ -2429,8 +2429,8 @@ and non-living = 3. This will do the trick:</p>
 4 non-living                3
 5      plant                1
 6     animal                2
-7      plant                1
-8     animal                2
+7     animal                2
+8      plant                1
 9 non-living                3
 </code></pre>
 
@@ -2441,7 +2441,7 @@ elements that were &quot;plants&quot;, we could do the following:</p>
 <pre><code class="r">f2 == &quot;plant&quot;
 </code></pre>
 
-<pre><code>[1] FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE
+<pre><code>[1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE
 </code></pre>
 
 <p>Or, to get the index numbers:</p>
@@ -2449,7 +2449,7 @@ elements that were &quot;plants&quot;, we could do the following:</p>
 <pre><code class="r">which(f2 == &quot;plant&quot;)
 </code></pre>
 
-<pre><code>[1] 5 7
+<pre><code>[1] 5 8
 </code></pre>
 
 <p>If the original data that were used to create a factor are
@@ -2616,7 +2616,7 @@ intercept).</p>
 </code></pre>
 
 <pre><code>(Intercept)         f32         f33         f34 
-  0.1945259  -0.3157898   0.3394097  -0.8695005 
+ -0.2811826   1.6901192  -0.4225555   0.2564350 
 </code></pre>
 
 <pre><code class="r">levels(f3)
@@ -2631,7 +2631,7 @@ intercept).</p>
 </code></pre>
 
 <pre><code>(Intercept)       f4bad      f4ugly f4obnoxious 
-  0.1945259  -0.3157898   0.3394097  -0.8695005 
+ -0.2811826   1.6901192  -0.4225555   0.2564350 
 </code></pre>
 
 <pre><code class="r">levels(f4)
@@ -3003,7 +3003,7 @@ print(mtSub.xtable, type = &quot;html&quot;)
 </code></pre>
 
 <pre><code>&lt;!-- html table generated in R 3.2.2 by xtable 1.7-4 package --&gt;
-&lt;!-- Wed Sep 30 10:05:03 2015 --&gt;
+&lt;!-- Wed Sep 30 10:08:05 2015 --&gt;
 &lt;table border=1&gt;
 &lt;tr&gt; &lt;th&gt;  &lt;/th&gt; &lt;th&gt; hp &lt;/th&gt; &lt;th&gt; mpg &lt;/th&gt;  &lt;/tr&gt;
   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; Hornet Sportabout &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 175.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 18.70 &lt;/td&gt; &lt;/tr&gt;
@@ -3022,7 +3022,7 @@ print(mtSub.xtable, type = &quot;html&quot;)
 </code></pre>
 
 <pre><code>% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Wed Sep 30 10:05:03 2015
+% Wed Sep 30 10:08:05 2015
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -3065,7 +3065,7 @@ adds two numbers together and substracts 7.</p>
 <pre><code>function(x, y) {
   return(x + y - 7)
 }
-&lt;environment: 0x7fb53d155ad0&gt;
+&lt;environment: 0x7ff8999ac8d0&gt;
 </code></pre>
 
 <p>To call the function, add in parameter values for x and y.</p>
@@ -3389,13 +3389,13 @@ within a function.</p>
 <pre><code class="r">simp6()
 </code></pre>
 
-<pre><code>[1] &quot;A random Poisson variate: 13&quot;
+<pre><code>[1] &quot;A random Poisson variate: 14&quot;
 </code></pre>
 
 <pre><code class="r">simp6()
 </code></pre>
 
-<pre><code>[1] &quot;A random Poisson variate: 19&quot;
+<pre><code>[1] &quot;A random Poisson variate: 17&quot;
 </code></pre>
 
 <h4>Exercise 3.4: Making your own functions</h4>
@@ -3494,7 +3494,7 @@ complicated R object called a list.</p>
   .. ..- attr(*, &quot;order&quot;)= int 1
   .. ..- attr(*, &quot;intercept&quot;)= int 1
   .. ..- attr(*, &quot;response&quot;)= int 1
-  .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: 0x7fb53d155ad0&gt; 
+  .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: 0x7ff8999ac8d0&gt; 
   .. ..- attr(*, &quot;predvars&quot;)= language list(dist, speed)
   .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;dist&quot; &quot;speed&quot;
@@ -3511,7 +3511,7 @@ complicated R object called a list.</p>
   .. .. ..- attr(*, &quot;order&quot;)= int 1
   .. .. ..- attr(*, &quot;intercept&quot;)= int 1
   .. .. ..- attr(*, &quot;response&quot;)= int 1
-  .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: 0x7fb53d155ad0&gt; 
+  .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: 0x7ff8999ac8d0&gt; 
   .. .. ..- attr(*, &quot;predvars&quot;)= language list(dist, speed)
   .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;dist&quot; &quot;speed&quot;
@@ -3869,7 +3869,7 @@ be 600.</p>
 <pre><code class="r">sum(above_2 &amp; below_8)
 </code></pre>
 
-<pre><code>[1] 596
+<pre><code>[1] 572
 </code></pre>
 
 <h4>Exercise 2.5: Named vectors</h4>
@@ -3990,15 +3990,15 @@ n
 </code></pre>
 
 <pre><code>  char       num1     num2
-A    a 0.17514621 2.842305
-B    b 0.05140898 5.897858
-C    c 0.31988856 3.977765
-D    a 0.14769618 2.427873
-E    b 0.40618154 2.156681
-F    c 0.35305960 2.178733
-G    a 0.72038926 2.121371
-H    b 0.08925736 6.031397
-I    c 0.88736914 3.010642
+A    a 0.06007265 6.890162
+B    b 0.41230651 2.482790
+C    c 0.61249436 3.069480
+D    a 0.72593510 4.826425
+E    b 0.99527909 5.410148
+F    c 0.84234430 6.857794
+G    a 0.75289958 4.424985
+H    b 0.12408696 5.610527
+I    c 0.42643438 2.585060
 </code></pre>
 
 <p>Display 2nd column, 4th and 5th rows using names.</p>
@@ -4006,7 +4006,7 @@ I    c 0.88736914 3.010642
 <pre><code class="r">X[c(&quot;D&quot;, &quot;E&quot;), &quot;num1&quot;]
 </code></pre>
 
-<pre><code>[1] 0.1476962 0.4061815
+<pre><code>[1] 0.7259351 0.9952791
 </code></pre>
 
 <p>Create a subset of the data to satisfy the criteria.</p>
@@ -4022,7 +4022,7 @@ allCrit &lt;- criteria1 &amp; criteria2 &amp; criteria3
 <pre><code class="r">sum(allCrit)
 </code></pre>
 
-<pre><code>[1] 4
+<pre><code>[1] 5
 </code></pre>
 
 <p>Display the subset.</p>
@@ -4031,10 +4031,11 @@ allCrit &lt;- criteria1 &amp; criteria2 &amp; criteria3
 </code></pre>
 
 <pre><code>  char      num1     num2
-C    c 0.3198886 3.977765
-E    b 0.4061815 2.156681
-F    c 0.3530596 2.178733
-I    c 0.8873691 3.010642
+B    b 0.4123065 2.482790
+C    c 0.6124944 3.069480
+E    b 0.9952791 5.410148
+H    b 0.1240870 5.610527
+I    c 0.4264344 2.585060
 </code></pre>
 
 <p>What happens if all values of &#39;allCrit&#39; are false? We get back a data frame with no rows.</p>
@@ -4128,8 +4129,8 @@ myList
 [1] &quot;this&quot; &quot;that&quot;
 
 $numVec
-[1] -1.09305070 -1.44739007 -0.01092008  1.35115831 -0.11800083  0.12301124
-[7] -0.26336687
+[1]  0.1778192 -0.0747865 -0.8870615  0.3230876 -1.7595667 -1.9550235
+[7]  0.1825441
 
 $mat
      [,1] [,2]
@@ -4168,15 +4169,15 @@ $charVec
 <pre><code class="r">myList[[&quot;numVec&quot;]]
 </code></pre>
 
-<pre><code>[1] -1.09305070 -1.44739007 -0.01092008  1.35115831 -0.11800083  0.12301124
-[7] -0.26336687
+<pre><code>[1]  0.1778192 -0.0747865 -0.8870615  0.3230876 -1.7595667 -1.9550235
+[7]  0.1825441
 </code></pre>
 
 <pre><code class="r">myList$numVec
 </code></pre>
 
-<pre><code>[1] -1.09305070 -1.44739007 -0.01092008  1.35115831 -0.11800083  0.12301124
-[7] -0.26336687
+<pre><code>[1]  0.1778192 -0.0747865 -0.8870615  0.3230876 -1.7595667 -1.9550235
+[7]  0.1825441
 </code></pre>
 
 <p>Calculate the length of each element, returned as a vector.</p>

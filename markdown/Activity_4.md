@@ -87,7 +87,7 @@ List of 12
   .. ..- attr(*, "order")= int 1
   .. ..- attr(*, "intercept")= int 1
   .. ..- attr(*, "response")= int 1
-  .. ..- attr(*, ".Environment")=<environment: 0x7fb53d155ad0> 
+  .. ..- attr(*, ".Environment")=<environment: 0x7ff8999ac8d0> 
   .. ..- attr(*, "predvars")= language list(dist, speed)
   .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
   .. .. ..- attr(*, "names")= chr [1:2] "dist" "speed"
@@ -104,7 +104,7 @@ List of 12
   .. .. ..- attr(*, "order")= int 1
   .. .. ..- attr(*, "intercept")= int 1
   .. .. ..- attr(*, "response")= int 1
-  .. .. ..- attr(*, ".Environment")=<environment: 0x7fb53d155ad0> 
+  .. .. ..- attr(*, ".Environment")=<environment: 0x7ff8999ac8d0> 
   .. .. ..- attr(*, "predvars")= language list(dist, speed)
   .. .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
   .. .. .. ..- attr(*, "names")= chr [1:2] "dist" "speed"
