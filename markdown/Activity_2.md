@@ -156,7 +156,7 @@ str(x)
 ```
 
 ```
- num [1:500] 2.19 5.301 3.785 -0.231 4.361 ...
+ num [1:500] 1.69 7.56 -0.73 2.28 3.89 ...
 ```
 
 The `length()` function returns the number of elements in `x`.
@@ -177,7 +177,7 @@ sum(x)
 ```
 
 ```
-[1] 1500.357
+[1] 1519.036
 ```
 
 ```r
@@ -185,7 +185,7 @@ mean(x)
 ```
 
 ```
-[1] 3.000714
+[1] 3.038071
 ```
 
 ```r
@@ -193,7 +193,7 @@ max(x)
 ```
 
 ```
-[1] 8.723626
+[1] 10.35372
 ```
 
 ```r
@@ -201,7 +201,7 @@ min(x)
 ```
 
 ```
-[1] -2.695706
+[1] -4.569994
 ```
 
 ```r
@@ -209,7 +209,7 @@ sd(x)
 ```
 
 ```
-[1] 1.895011
+[1] 2.07731
 ```
 
 The `summary()` function provides summary statistics.
@@ -220,7 +220,7 @@ summary(x)
 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- -2.696   1.629   3.027   3.001   4.378   8.724 
+ -4.570   1.711   3.079   3.038   4.335  10.350 
 ```
 
 The `head()` and `tail()` functions shows the first or last 6 elements, respectively.
@@ -230,7 +230,7 @@ head(x)
 ```
 
 ```
-[1]  2.1903659  5.3006754  3.7846527 -0.2314857  4.3606447  3.0430256
+[1]  1.6945771  7.5569144 -0.7301704  2.2783516  3.8932270  0.9679906
 ```
 
 ```r
@@ -238,7 +238,7 @@ tail(x)
 ```
 
 ```
-[1] 0.6150675 3.5996400 6.6161307 0.8401297 4.3694436 5.0285421
+[1] 2.408713 2.116193 7.321237 2.129248 4.382119 4.568843
 ```
 
 We can easily extract elements of vectors.  For example,
@@ -826,7 +826,11 @@ But attempting to strip the names when you extract
 more than one element doesn't work:
 
 ```r
-try(aNamedVec[[c("type", "max")]])
+aNamedVec[[c("type", "max")]]
+```
+
+```
+Error in aNamedVec[[c("type", "max")]]: attempt to select more than one element
 ```
 
 Speaking of removing names, here's how you can do that:
@@ -1450,9 +1454,9 @@ m2
 
 ```
       [,1]  [,2]  [,3]
-[1,]  TRUE FALSE  TRUE
-[2,] FALSE FALSE FALSE
-[3,] FALSE  TRUE FALSE
+[1,]  TRUE FALSE FALSE
+[2,] FALSE  TRUE FALSE
+[3,]  TRUE FALSE FALSE
 ```
 
 ```r
@@ -1460,7 +1464,7 @@ str(m2)
 ```
 
 ```
- logi [1:3, 1:3] TRUE FALSE FALSE FALSE FALSE TRUE ...
+ logi [1:3, 1:3] TRUE FALSE TRUE FALSE TRUE FALSE ...
 ```
 
 And you can melt a matrix back into a vector using `as.vector()`:
@@ -1471,7 +1475,7 @@ x1
 ```
 
 ```
-[1]  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
+[1]  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE
 ```
 
 ```r
@@ -1976,7 +1980,11 @@ But if we use the double bracket with more than one element,
 we end up with trouble:
 
 ```r
-try(aList[[c("c.new", "b.new")]])
+aList[[c("c.new", "b.new")]]
+```
+
+```
+Error in aList[[c("c.new", "b.new")]]: subscript out of bounds
 ```
 
 The length() function returns the number of elements
@@ -2223,7 +2231,7 @@ dList
 [1] TRUE TRUE
 
 [[3]]
-[1]  0.1122982 -1.8249637 -1.4458625
+[1]  0.4196336  0.6885846 -0.2392585
 
 [[4]]
      [,1] [,2]
@@ -2272,8 +2280,8 @@ var
 ```
 
 ```
-[1] "animal"     "non-living" "animal"     "plant"      "non-living"
-[6] "non-living" "non-living" "plant"      "animal"    
+[1] "non-living" "non-living" "animal"     "non-living" "plant"     
+[6] "animal"     "plant"      "animal"     "non-living"
 ```
 
 We could create a factor vector as follows:
@@ -2284,8 +2292,8 @@ f1
 ```
 
 ```
-[1] animal     non-living animal     plant      non-living non-living
-[7] non-living plant      animal    
+[1] non-living non-living animal     non-living plant      animal    
+[7] plant      animal     non-living
 Levels: animal non-living plant
 ```
 
@@ -2297,7 +2305,7 @@ str(f1)
 ```
 
 ```
- Factor w/ 3 levels "animal","non-living",..: 1 2 1 3 2 2 2 3 1
+ Factor w/ 3 levels "animal","non-living",..: 2 2 1 2 3 1 3 1 2
 ```
 
 Factors have a nice summary() method that counts the number
@@ -2332,7 +2340,7 @@ as.numeric(f1)
 ```
 
 ```
-[1] 1 2 1 3 2 2 2 3 1
+[1] 2 2 1 2 3 1 3 1 2
 ```
 
 And we can pair the codings side-by-side in a data frame
@@ -2344,15 +2352,15 @@ data.frame(original = var, numerical.coding = as.numeric(f1))
 
 ```
     original numerical.coding
-1     animal                1
+1 non-living                2
 2 non-living                2
 3     animal                1
-4      plant                3
-5 non-living                2
-6 non-living                2
-7 non-living                2
-8      plant                3
-9     animal                1
+4 non-living                2
+5      plant                3
+6     animal                1
+7      plant                3
+8     animal                1
+9 non-living                2
 ```
 
 Suppose we prefer a different mapping: plant = 1, animal = 2,
@@ -2370,15 +2378,15 @@ data.frame(original = var, numerical.coding = as.numeric(f2))
 
 ```
     original numerical.coding
-1     animal                2
+1 non-living                3
 2 non-living                3
 3     animal                2
-4      plant                1
-5 non-living                3
-6 non-living                3
-7 non-living                3
-8      plant                1
-9     animal                2
+4 non-living                3
+5      plant                1
+6     animal                2
+7      plant                1
+8     animal                2
+9 non-living                3
 ```
 
 We subset factors by referencing their level names, not their
@@ -2390,7 +2398,7 @@ f2 == "plant"
 ```
 
 ```
-[1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE
+[1] FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE
 ```
 
 Or, to get the index numbers:
@@ -2400,7 +2408,7 @@ which(f2 == "plant")
 ```
 
 ```
-[1] 4 8
+[1] 5 7
 ```
 
 If the original data that were used to create a factor are
@@ -2597,7 +2605,7 @@ coef(m1)
 
 ```
 (Intercept)         f32         f33         f34 
-  0.3492999  -0.5479213   0.1707674  -1.1189338 
+  0.1945259  -0.3157898   0.3394097  -0.8695005 
 ```
 
 ```r
@@ -2616,7 +2624,7 @@ coef(lm(x ~ f4))
 
 ```
 (Intercept)       f4bad      f4ugly f4obnoxious 
-  0.3492999  -0.5479213   0.1707674  -1.1189338 
+  0.1945259  -0.3157898   0.3394097  -0.8695005 
 ```
 
 ```r

@@ -95,7 +95,7 @@ bNamedVec
 aNamedVec["type"]
 aNamedVec[["type"]]
 aNamedVec[c("type", "max")]
-try(aNamedVec[[c("type", "max")]])
+aNamedVec[[c("type", "max")]]
 names(aNamedVec) <- NULL
 aNamedVec
 names(aNamedVec) <- c("type1", "count1", "max1")
@@ -201,7 +201,7 @@ aList["b.new"]
 aList[["b.new"]]
 aList$b.new
 aList[c("c.new", "b.new")]
-try(aList[[c("c.new", "b.new")]])
+aList[[c("c.new", "b.new")]]
 length(aList)
 aNewList <- list(d = "nice", e = 12.7,
                  f = complex(real = 1, imaginary = 7))

@@ -87,7 +87,7 @@ List of 12
   .. ..- attr(*, "order")= int 1
   .. ..- attr(*, "intercept")= int 1
   .. ..- attr(*, "response")= int 1
-  .. ..- attr(*, ".Environment")=<environment: 0x7fe1f5d66638> 
+  .. ..- attr(*, ".Environment")=<environment: 0x7fb53d155ad0> 
   .. ..- attr(*, "predvars")= language list(dist, speed)
   .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
   .. .. ..- attr(*, "names")= chr [1:2] "dist" "speed"
@@ -104,7 +104,7 @@ List of 12
   .. .. ..- attr(*, "order")= int 1
   .. .. ..- attr(*, "intercept")= int 1
   .. .. ..- attr(*, "response")= int 1
-  .. .. ..- attr(*, ".Environment")=<environment: 0x7fe1f5d66638> 
+  .. .. ..- attr(*, ".Environment")=<environment: 0x7fb53d155ad0> 
   .. .. ..- attr(*, "predvars")= language list(dist, speed)
   .. .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
   .. .. .. ..- attr(*, "names")= chr [1:2] "dist" "speed"
@@ -232,10 +232,10 @@ search()
  [1] ".GlobalEnv"        "mtcars"            "package:lattice"  
  [4] "package:xtable"    "package:buildDocs" "package:devtools" 
  [7] "package:tools"     "package:digest"    "package:knitr"    
-[10] "package:markdown"  "package:whisker"   "ESSR"             
-[13] "package:stats"     "package:graphics"  "package:grDevices"
-[16] "package:utils"     "package:datasets"  "package:methods"  
-[19] "Autoloads"         "package:base"     
+[10] "package:markdown"  "package:whisker"   "package:stats"    
+[13] "package:graphics"  "package:grDevices" "package:utils"    
+[16] "package:datasets"  "package:methods"   "Autoloads"        
+[19] "package:base"     
 ```
 
 Since `search()` returns a character vector, we could use the

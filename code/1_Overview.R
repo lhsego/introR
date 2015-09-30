@@ -7,7 +7,9 @@ Landon Sego
 ### Description ###
 
 This is a hands-on introduction to the [R language](http://www.R-project.org), with a number of examples and exercises designed to
-give you a basic feel for R.
+give you a basic feel for R.  
+
+By Landon Sego of Pacific Northwest National Laboratory and Veronica Bunn of the Florida State University.
 
 #### If you are running these examples on RStudio server:
 

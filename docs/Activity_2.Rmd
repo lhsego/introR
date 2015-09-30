@@ -447,7 +447,7 @@ aNamedVec[c("type", "max")]
 But attempting to strip the names when you extract
 more than one element doesn't work:
 ```{r}
-try(aNamedVec[[c("type", "max")]])
+aNamedVec[[c("type", "max")]]
 ```
 
 Speaking of removing names, here's how you can do that:
@@ -950,7 +950,7 @@ aList[c("c.new", "b.new")]
 But if we use the double bracket with more than one element,
 we end up with trouble:
 ```{r}
-try(aList[[c("c.new", "b.new")]])
+aList[[c("c.new", "b.new")]]
 ```
 
 The length() function returns the number of elements
